@@ -8,8 +8,6 @@ import io.github.deathcap.bukkit2sponge.event.GraniteEventFactory;
 import io.github.deathcap.bukkit2sponge.guice.ShinyGuiceModule;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.spongepowered.api.event.state.ConstructionEvent;
 import org.spongepowered.api.event.state.PreInitializationEvent;
 import org.spongepowered.api.event.state.StateEvent;
@@ -21,7 +19,7 @@ import java.util.Collection;
 
 public class Bukkit2Sponge extends JavaPlugin {
 
-    public static final Bukkit2Sponge instance = new Bukkit2Sponge();
+    public static Bukkit2Sponge instance = null;
 
     public Injector getInjector() {
         return injector;
@@ -38,6 +36,8 @@ public class Bukkit2Sponge extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        Bukkit2Sponge.instance = this;
+
         PluginDescriptionFile pdfFile = this.getDescription();
         getLogger().info( pdfFile.getName() + " version " + pdfFile.getVersion() + " is enabled!" );
 
@@ -89,11 +89,13 @@ public class Bukkit2Sponge extends JavaPlugin {
         this.game.getEventManager().post(GraniteEventFactory.createStateEvent(type, this.game));
     }
 
+    // Sponge directories relative to our own Bukkit plugin data folder
+
     public File getPluginsDirectory() {
-        return new File("plugins"); // TODO
+        return new File(this.getDataFolder(), "plugins");
     }
 
     public File getConfigDirectory() {
-        return new File("config"); // TODO
+        return new File(this.getDataFolder(), "config");
     }
 }
