@@ -8,13 +8,19 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <bukkit.version>1.8.3-R0.1-SNAPSHOT</bukkit.version>
   </properties>
 
   <repositories>
     <repository>
-      <id>bukkit-repo</id>
-      <url>http://repo.bukkit.org/content/groups/public</url>
+        <id>spigotmc-releases-snapshots</id>
+        <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
     </repository>
+    <repository>
+        <id>spigotmc-releases</id>
+        <url>https://hub.spigotmc.org/nexus/content/repositories/releases/</url>
+    </repository>
+
     <repository>
       <id>sponge-repo</id>
       <url>https://repo.spongepowered.org/maven</url>
@@ -25,7 +31,7 @@
     <dependency>
       <groupId>org.bukkit</groupId>
       <artifactId>bukkit</artifactId>
-      <version>1.4.6-R0.3</version>
+      <version>${bukkit.version}</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
