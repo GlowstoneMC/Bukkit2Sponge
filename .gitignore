@@ -1,0 +1,10 @@
+/.classpath
+/.project
+/.settings
+/nbproject
+/target
+/bin
+/dist
+/.idea
+.*.sw[a-p]
+*.iml

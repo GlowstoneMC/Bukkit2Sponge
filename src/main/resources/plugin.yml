@@ -1,0 +1,3 @@
+name: Bukkit2Sponge
+main: io.github.deathcap.bukkit2sponge.SamplePlugin
+version: ${version}
