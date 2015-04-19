@@ -26,6 +26,7 @@ package io.github.deathcap.bukkit2sponge.event;
  * THE SOFTWARE.
  */
 
+import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
@@ -43,7 +44,7 @@ import java.util.Map;
 public class GraniteEventFactory {
 
     private static final FactoryProvider factoryProvider;
-    private static final LoadingCache<Class<?>, EventFactory<?>> factories;
+    private static final Cache<Class<?>, EventFactory<?>> factories;
 
     static {
         factoryProvider = new ClassGeneratorProvider(GraniteEventFactory.class.getPackage().getName() + ".impl");
