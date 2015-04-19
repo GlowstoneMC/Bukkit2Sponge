@@ -4,7 +4,7 @@ import com.google.common.base.Optional;
 import com.google.common.io.PatternFilenameFilter;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import io.github.deathcap.bukkit2sponge.Shiny;
+import io.github.deathcap.bukkit2sponge.Bukkit2Sponge;
 import io.github.deathcap.bukkit2sponge.ShinyGame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,7 +68,7 @@ public class ShinyPluginManager implements PluginManager {
      * @throws IOException
      */
     public Collection<URL> loadPlugins() throws IOException {
-        File directory = Shiny.instance.getPluginsDirectory();
+        File directory = Bukkit2Sponge.instance.getPluginsDirectory();
         File[] files = directory.listFiles(new PatternFilenameFilter(".+\\.jar"));
         if (files == null || files.length == 0) {
             return new ArrayList<>();
@@ -79,14 +79,14 @@ public class ShinyPluginManager implements PluginManager {
             try {
                 urls.add(jar.toURI().toURL());
             } catch (MalformedURLException e) {
-                Shiny.instance.logger.warn("Malformed URL: " + jar, e);
+                Bukkit2Sponge.instance.logger.warn("Malformed URL: " + jar, e);
             }
         }
 
         Collection<PluginContainer> containers = loader.loadPlugins(urls);
         for (PluginContainer container : containers) {
             if (plugins.containsKey(container.getId())) {
-                Shiny.instance.logger.warn("Skipped loading duplicate of \"" + container.getId() + "\"");
+                Bukkit2Sponge.instance.logger.warn("Skipped loading duplicate of \"" + container.getId() + "\"");
                 continue;
             }
             plugins.put(container.getId(), container);

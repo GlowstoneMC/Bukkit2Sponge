@@ -1,6 +1,6 @@
 package io.github.deathcap.bukkit2sponge.plugin;
 
-import io.github.deathcap.bukkit2sponge.Shiny;
+import io.github.deathcap.bukkit2sponge.Bukkit2Sponge;
 import io.github.deathcap.bukkit2sponge.ShinyGame;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.plugin.PluginContainer;
@@ -65,7 +65,7 @@ final class PluginLoader {
                     try {
                         clazz = classLoader.loadClass(name);
                     } catch (Throwable t) {
-                        Shiny.instance.logger.error("Error loading " + url.getFile() + "/" + name, t);
+                        Bukkit2Sponge.instance.logger.error("Error loading " + url.getFile() + "/" + name, t);
                         continue;
                     }
 
@@ -78,7 +78,7 @@ final class PluginLoader {
                 }
             }
         } catch (IOException ex) {
-            Shiny.instance.logger.error("Error reading " + url, ex);
+            Bukkit2Sponge.instance.logger.error("Error reading " + url, ex);
         }
 
         return hasPlugin;
@@ -91,7 +91,7 @@ final class PluginLoader {
                 ShinyPluginContainer container = new ShinyPluginContainer(clazz);
                 return container;
             } catch (Throwable t) {
-                Shiny.instance.logger.error("Error initializing " + annotation.id() + " (" + clazz + ")", t);
+                Bukkit2Sponge.instance.logger.error("Error initializing " + annotation.id() + " (" + clazz + ")", t);
             }
         }
         return null;

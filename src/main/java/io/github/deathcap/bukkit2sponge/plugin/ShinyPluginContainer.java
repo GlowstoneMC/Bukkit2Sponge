@@ -1,7 +1,7 @@
 package io.github.deathcap.bukkit2sponge.plugin;
 
 import com.google.inject.Injector;
-import io.github.deathcap.bukkit2sponge.Shiny;
+import io.github.deathcap.bukkit2sponge.Bukkit2Sponge;
 import io.github.deathcap.bukkit2sponge.guice.ShinyPluginGuiceModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@ public final class ShinyPluginContainer implements PluginContainer {
         this.version = info.version();
         this.logger = LoggerFactory.getLogger(this.id);
 
-        Injector injector = Shiny.instance.getInjector().createChildInjector(new ShinyPluginGuiceModule(this));
+        Injector injector = Bukkit2Sponge.instance.getInjector().createChildInjector(new ShinyPluginGuiceModule(this));
         this.instance = injector.getInstance(pluginClass);
     }
 

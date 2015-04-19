@@ -1,7 +1,7 @@
 package io.github.deathcap.bukkit2sponge.event;
 
 import com.google.common.base.Optional;
-import io.github.deathcap.bukkit2sponge.Shiny;
+import io.github.deathcap.bukkit2sponge.Bukkit2Sponge;
 import org.bukkit.event.Cancellable;
 import org.spongepowered.api.Game;
 import org.spongepowered.api.event.GameEvent;
@@ -13,7 +13,7 @@ public class ShinyGameEvent extends BaseEvent implements GameEvent, Cancellable,
     private boolean cancelled = false;
 
     public Game getGame() {
-        return Shiny.instance.getGame();
+        return Bukkit2Sponge.instance.getGame();
     }
 
     @Override

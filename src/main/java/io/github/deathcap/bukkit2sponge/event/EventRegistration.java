@@ -1,6 +1,6 @@
 package io.github.deathcap.bukkit2sponge.event;
 
-import io.github.deathcap.bukkit2sponge.Shiny;
+import io.github.deathcap.bukkit2sponge.Bukkit2Sponge;
 import org.spongepowered.api.event.Cancellable;
 import org.spongepowered.api.event.Event;
 
@@ -37,9 +37,9 @@ public final class EventRegistration {
             try {
                 method.invoke(object, event);
             } catch (InvocationTargetException e) {
-                Shiny.instance.logger.error("Event error", e.getTargetException());
+                Bukkit2Sponge.instance.logger.error("Event error", e.getTargetException());
             } catch (IllegalAccessException e) {
-                Shiny.instance.logger.error("Event error", e);
+                Bukkit2Sponge.instance.logger.error("Event error", e);
             }
         }
     }
