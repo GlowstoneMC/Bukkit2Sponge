@@ -37,9 +37,9 @@ public final class EventRegistration {
             try {
                 method.invoke(object, event);
             } catch (InvocationTargetException e) {
-                Bukkit2Sponge.instance.logger.error("Event error", e.getTargetException());
+                Bukkit2Sponge.instance.getLogger().warning("Event error" + e.getTargetException());
             } catch (IllegalAccessException e) {
-                Bukkit2Sponge.instance.logger.error("Event error", e);
+                Bukkit2Sponge.instance.getLogger().warning("Event error" + e);
             }
         }
     }

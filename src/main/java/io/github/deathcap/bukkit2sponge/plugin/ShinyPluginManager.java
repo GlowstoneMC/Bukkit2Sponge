@@ -79,14 +79,14 @@ public class ShinyPluginManager implements PluginManager {
             try {
                 urls.add(jar.toURI().toURL());
             } catch (MalformedURLException e) {
-                Bukkit2Sponge.instance.logger.warn("Malformed URL: " + jar, e);
+                Bukkit2Sponge.instance.getLogger().warning("Malformed URL: " + jar + e);
             }
         }
 
         Collection<PluginContainer> containers = loader.loadPlugins(urls);
         for (PluginContainer container : containers) {
             if (plugins.containsKey(container.getId())) {
-                Bukkit2Sponge.instance.logger.warn("Skipped loading duplicate of \"" + container.getId() + "\"");
+                Bukkit2Sponge.instance.getLogger().warning("Skipped loading duplicate of \"" + container.getId() + "\"");
                 continue;
             }
             plugins.put(container.getId(), container);

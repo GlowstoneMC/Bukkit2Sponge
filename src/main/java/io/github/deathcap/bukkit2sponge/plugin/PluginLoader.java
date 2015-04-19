@@ -65,7 +65,7 @@ final class PluginLoader {
                     try {
                         clazz = classLoader.loadClass(name);
                     } catch (Throwable t) {
-                        Bukkit2Sponge.instance.logger.error("Error loading " + url.getFile() + "/" + name, t);
+                        Bukkit2Sponge.instance.getLogger().warning("Error loading " + url.getFile() + "/" + name + t);
                         continue;
                     }
 
@@ -78,7 +78,7 @@ final class PluginLoader {
                 }
             }
         } catch (IOException ex) {
-            Bukkit2Sponge.instance.logger.error("Error reading " + url, ex);
+            Bukkit2Sponge.instance.getLogger().warning("Error reading " + url + ex);
         }
 
         return hasPlugin;
@@ -91,7 +91,7 @@ final class PluginLoader {
                 ShinyPluginContainer container = new ShinyPluginContainer(clazz);
                 return container;
             } catch (Throwable t) {
-                Bukkit2Sponge.instance.logger.error("Error initializing " + annotation.id() + " (" + clazz + ")", t);
+                Bukkit2Sponge.instance.getLogger().warning("Error initializing " + annotation.id() + " (" + clazz + ")" + t);
             }
         }
         return null;

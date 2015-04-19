@@ -23,16 +23,11 @@ public class Bukkit2Sponge extends JavaPlugin {
 
     public static final Bukkit2Sponge instance = new Bukkit2Sponge();
 
-    public static Logger getLogger() {
-        return instance.logger;
-    }
-
     public Injector getInjector() {
         return injector;
     }
 
     private Injector injector;
-    public Logger logger;
 
     private ShinyGame game;
 
@@ -53,7 +48,6 @@ public class Bukkit2Sponge extends JavaPlugin {
         Collection<URL> loadedPluginURLs = null;
 
         try {
-            logger = LoggerFactory.getLogger("Bukkit2Sponge");
             injector = Guice.createInjector(new ShinyGuiceModule());
 
             /*
