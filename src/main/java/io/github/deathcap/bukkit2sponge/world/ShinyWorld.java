@@ -5,7 +5,6 @@ import com.flowpowered.math.vector.Vector3d;
 import com.flowpowered.math.vector.Vector3i;
 import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
-import net.glowstone.GlowWorld;
 import org.spongepowered.api.block.BlockSnapshot;
 import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.block.BlockType;
@@ -37,17 +36,13 @@ import java.util.Map;
 import java.util.UUID;
 
 public class ShinyWorld implements World {
-    private GlowWorld handle;
+    private org.bukkit.World handle;
 
-    public ShinyWorld(GlowWorld handle) {
+    public ShinyWorld(org.bukkit.World handle) {
         this.handle = handle;
     }
 
-    public ShinyWorld(org.bukkit.World world) {
-        this((GlowWorld) world);
-    }
-
-    public GlowWorld getHandle() {
+    public org.bukkit.World getHandle() {
         return this.handle;
     }
 
