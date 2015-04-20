@@ -25,6 +25,7 @@ import org.spongepowered.api.text.title.Title;
 import org.spongepowered.api.util.Direction;
 import org.spongepowered.api.world.*;
 import org.spongepowered.api.world.biome.BiomeType;
+import org.spongepowered.api.world.difficulty.Difficulties;
 import org.spongepowered.api.world.difficulty.Difficulty;
 import org.spongepowered.api.world.gen.WorldGenerator;
 import org.spongepowered.api.world.storage.WorldProperties;
@@ -48,7 +49,13 @@ public class ShinyWorld implements World {
 
     @Override
     public Difficulty getDifficulty() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        switch (this.handle.getDifficulty()) {
+            case EASY: return Difficulties.EASY;
+            case HARD: return Difficulties.HARD;
+            case NORMAL: return Difficulties.NORMAL;
+            case PEACEFUL: return Difficulties.PEACEFUL;
+            default: return Difficulties.NORMAL;
+        }
     }
 
     @Override
