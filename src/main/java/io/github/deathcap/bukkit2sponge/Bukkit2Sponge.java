@@ -4,6 +4,7 @@ package io.github.deathcap.bukkit2sponge;
 import com.google.common.base.Throwables;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import io.github.deathcap.bukkit2sponge.bukkit.BukkitListener;
 import io.github.deathcap.bukkit2sponge.event.GraniteEventFactory;
 import io.github.deathcap.bukkit2sponge.guice.ShinyGuiceModule;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -20,6 +21,7 @@ import java.util.Collection;
 public class Bukkit2Sponge extends JavaPlugin {
 
     public static Bukkit2Sponge instance = null;
+    private final BukkitListener bukkitListener = new BukkitListener();
 
     public Injector getInjector() {
         return injector;
@@ -66,6 +68,8 @@ public class Bukkit2Sponge extends JavaPlugin {
 
 
             this.game = injector.getInstance(ShinyGame.class);
+
+            getServer().getPluginManager().registerEvents(bukkitListener, this);
 
             getLogger().info("SpongeAPI version: " + this.game.getApiVersion());
 
