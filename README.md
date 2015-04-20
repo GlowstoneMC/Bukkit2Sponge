@@ -63,6 +63,12 @@ mvn package
 The plugin jar will be placed in `target/`.
 
 
+See also
+--------
+
+* [Bukkit2Sponge thread on Sponge Forums](https://forums.spongepowered.org/t/pore-a-bukkit-sponge-bridge/1663)
+* [Pore](https://github.com/LapisBlue/Pore): a Sponge plugin to load Bukkit plugins (the opposite of Bukkit2Sponge)
+
 License
 -------
 
