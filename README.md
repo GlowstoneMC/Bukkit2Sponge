@@ -3,9 +3,11 @@ Bukkit2Sponge
 
 An implementation of [SpongeAPI](https://github.com/SpongePowered/SpongeAPI) as a Bukkit plugin.
 
-Allows loading SpongeAPI plugins on Bukkit servers.
+[![Build Status](https://circleci.com/gh/deathcap/Bukkit2Sponge/tree/master.png)](https://circleci.com/gh/deathcap/Bukkit2Sponge/tree/master)
 
-Warning: very incomplete
+Bukkit2Sponge allows loading SpongeAPI plugins on Bukkit servers.
+
+Warning: very incomplete (bug reports and pull requests appreciated)
 
 Usage
 -----
@@ -21,6 +23,16 @@ When starting the server, if configured correctly Bukkit2Sponge should log the S
 17:52:00 [INFO] [Bukkit2Sponge] Loading plugins...
 17:52:00 [INFO] [Bukkit2Sponge] Initializing 1 SpongeAPI plugins...
 ```
+
+Downloads
+---------
+
+Latest builds are available from:
+
+* **[CircleCI downloads](https://circleci.com/gh/deathcap/Bukkit2Sponge/tree/master)** - click the latest build then expand "Artifacts" (if it does not show, try logging in with GitHub)
+[![Build Status](https://circleci.com/gh/deathcap/Bukkit2Sponge/tree/master.png)](https://circleci.com/gh/deathcap/Bukkit2Sponge/tree/master)
+
+
 
 Building from source
 --------------------
