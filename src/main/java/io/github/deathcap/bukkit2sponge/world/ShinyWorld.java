@@ -31,6 +31,7 @@ import org.spongepowered.api.world.gen.WorldGenerator;
 import org.spongepowered.api.world.storage.WorldProperties;
 import org.spongepowered.api.world.storage.WorldStorage;
 import org.spongepowered.api.world.weather.Weather;
+import org.spongepowered.api.world.weather.Weathers;
 
 import java.util.Collection;
 import java.util.Map;
@@ -100,7 +101,7 @@ public class ShinyWorld implements World {
 
     @Override
     public Optional<String> getGameRule(String gameRule) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return Optional.of(this.handle.getGameRuleValue(gameRule));
     }
 
     @Override
@@ -125,12 +126,12 @@ public class ShinyWorld implements World {
 
     @Override
     public boolean doesKeepSpawnLoaded() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return this.handle.getKeepSpawnInMemory();
     }
 
     @Override
     public void setKeepSpawnLoaded(boolean keepLoaded) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        this.handle.setKeepSpawnInMemory(keepLoaded);
     }
 
     @Override
@@ -165,12 +166,12 @@ public class ShinyWorld implements World {
 
     @Override
     public int getHeight() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return this.handle.getMaxHeight();
     }
 
     @Override
     public int getBuildHeight() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return this.handle.getMaxHeight(); // TODO: same?
     }
 
     @Override
@@ -625,7 +626,7 @@ public class ShinyWorld implements World {
 
     @Override
     public UUID getUniqueId() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return this.handle.getUID();
     }
 
     @Override
@@ -745,26 +746,46 @@ public class ShinyWorld implements World {
 
     @Override
     public Weather getWeather() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        if (this.handle.hasStorm()) {
+            return Weathers.RAIN;
+        } else if (this.handle.isThundering()) {
+            return Weathers.THUNDER_STORM;
+        } else {
+            return Weathers.CLEAR;
+        }
     }
 
     @Override
     public long getRemainingDuration() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return this.handle.getWeatherDuration() != 0 ? this.handle.getWeatherDuration() : this.handle.getThunderDuration();
     }
 
     @Override
     public long getRunningDuration() {
+        // TODO: doesn't appear the Bukkit API exposes running weather duration?
         return 0;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public void forecast(Weather weather) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        if (weather == Weathers.RAIN) {
+            this.handle.setStorm(true);
+        } else if (weather == Weathers.THUNDER_STORM) {
+            this.handle.setThundering(true);
+        } else if (weather == Weathers.CLEAR) {
+            this.handle.setStorm(false);
+            this.handle.setThundering(false);
+        }
     }
 
     @Override
     public void forecast(Weather weather, long duration) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        this.forecast(weather);
+
+        if (weather == Weathers.RAIN) {
+            this.handle.setWeatherDuration((int) duration);
+        } else if (weather == Weathers.THUNDER_STORM) {
+            this.handle.setThunderDuration((int) duration);
+        }
     }
 }
