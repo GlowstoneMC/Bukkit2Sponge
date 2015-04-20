@@ -69,6 +69,11 @@ public class ShinyPluginManager implements PluginManager {
      */
     public Collection<URL> loadPlugins() throws IOException {
         File directory = Bukkit2Sponge.instance.getPluginsDirectory();
+
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
         File[] files = directory.listFiles(new PatternFilenameFilter(".+\\.jar"));
         if (files == null || files.length == 0) {
             return new ArrayList<>();
