@@ -38,8 +38,9 @@ public class Bukkit2Sponge extends JavaPlugin {
     public void onEnable() {
         Bukkit2Sponge.instance = this;
 
+
         PluginDescriptionFile pdfFile = this.getDescription();
-        getLogger().info( pdfFile.getName() + " version " + pdfFile.getVersion() + " is enabled!" );
+        getLogger().info( pdfFile.getName() + " version " + pdfFile.getVersion() + " is loading");
 
         load();
     }
@@ -63,10 +64,9 @@ public class Bukkit2Sponge extends JavaPlugin {
              SERVER_STOPPED
              */
 
-            getLogger().info("Loading Bukkit2Sponge...");
+
             this.game = injector.getInstance(ShinyGame.class);
 
-            getLogger().info("Bukkit2Sponge " + this.game.getImplementationVersion() + " is starting...");
             getLogger().info("SpongeAPI version: " + this.game.getApiVersion());
 
             getLogger().info("Loading plugins...");
