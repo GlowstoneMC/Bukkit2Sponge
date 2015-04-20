@@ -8,3 +8,4 @@
 /.idea
 .*.sw[a-p]
 *.iml
+/dependency-reduced-pom.xml
