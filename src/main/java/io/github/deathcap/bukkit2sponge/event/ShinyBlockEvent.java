@@ -1,5 +1,6 @@
 package io.github.deathcap.bukkit2sponge.event;
 
+import io.github.deathcap.bukkit2sponge.block.ShinyBlockSnapshot;
 import io.github.deathcap.bukkit2sponge.world.ShinyWorld;
 import org.spongepowered.api.block.BlockSnapshot;
 import org.spongepowered.api.event.ExperienceEvent;
@@ -12,15 +13,26 @@ public class ShinyBlockEvent extends ShinyGameEvent implements BlockEvent, Block
 
     private Location block;
     private int exp;
+    private BlockSnapshot replacement;
 
     public ShinyBlockEvent(Location block) {
         this.block = block;
     }
 
     public ShinyBlockEvent(org.bukkit.Location location) {
+        this(location, null);
+    }
+
+    public ShinyBlockEvent(org.bukkit.Location location, org.bukkit.block.BlockState replacement) {
         Extent extent = new ShinyWorld(location.getWorld());
         this.block = new Location(extent, location.getX(), location.getY(), location.getZ());
+
+        if (replacement != null) {
+            this.replacement = new ShinyBlockSnapshot(replacement);
+        }
     }
+
+
 
     public Location getBlock() {
         return this.block;
@@ -28,7 +40,7 @@ public class ShinyBlockEvent extends ShinyGameEvent implements BlockEvent, Block
 
     @Override
     public BlockSnapshot getReplacementBlock() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return this.replacement;
     }
 
     @Override
