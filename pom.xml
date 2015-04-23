@@ -87,10 +87,6 @@
                 </excludes>
               </artifactSet>
               <relocations>
-                <relocation>
-                  <pattern>com.google.common</pattern>
-                  <shadedPattern>io.github.deathcap.bukkit2sponge.libs.guava17.com.google.common</shadedPattern>
-                </relocation>
               </relocations>
             </configuration>
            </execution>
