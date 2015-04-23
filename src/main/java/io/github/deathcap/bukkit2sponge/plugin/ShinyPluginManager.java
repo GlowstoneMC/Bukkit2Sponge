@@ -94,6 +94,7 @@ public class ShinyPluginManager implements PluginManager {
                 Bukkit2Sponge.instance.getLogger().warning("Skipped loading duplicate of \"" + container.getId() + "\"");
                 continue;
             }
+            Bukkit2Sponge.instance.getLogger().info("SpongeAPI plugin found: "+container.getName()+" v"+container.getVersion());
             plugins.put(container.getId(), container);
             instanceMap.put(container.getInstance(), container);
             game.getEventManager().register(container.getInstance(), container.getInstance());
