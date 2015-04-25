@@ -5,6 +5,7 @@ import com.google.inject.Singleton;
 import io.github.deathcap.bukkit2sponge.command.ShinyCommandService;
 import io.github.deathcap.bukkit2sponge.event.ShinyEventManager;
 import io.github.deathcap.bukkit2sponge.plugin.ShinyPluginManager;
+import io.github.deathcap.bukkit2sponge.text.ShinyTextFactory;
 import org.spongepowered.api.*;
 import org.spongepowered.api.service.ServiceManager;
 import org.spongepowered.api.service.SimpleServiceManager;
@@ -37,6 +38,7 @@ public class ShinyGame implements Game {
         API_VERSION = (apiVersion == null) ? "unknown" : apiVersion;
         String implVersion = pkg.getImplementationVersion();
         IMPL_VERSION = (implVersion == null) ? "unknown" : implVersion;
+        ShinyTextFactory.inject();
     }
 
     @Inject

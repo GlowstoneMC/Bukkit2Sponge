@@ -30,26 +30,13 @@ public class BukkitCommand extends Command {
             return commandMapping.getPrimaryAlias();
         }
 
-        return spongeTextToString(textOptional.get());
-    }
-
-    private static String spongeTextToString(Text text) {
-        try {
-            return Texts.toPlain(text);
-        } catch (NullPointerException ex) {
-            // Incomplete part of SpongeAPI? null factory
-            // https://github.com/SpongePowered/SpongeAPI/commit/38acf16861b99c76c8df23f8fceabe896217318b#commitcomment-10900228
-            if (text instanceof Text.Literal) {
-                return ((Text.Literal) text).getContent();
-            }
-            return text.toString();
-        }
+        return Texts.toPlain(textOptional.get());
     }
 
     private static String getUsage(CommandMapping commandMapping) {
         Text text = commandMapping.getCallable().getUsage(commandSource);;
 
-        return spongeTextToString(text);
+        return Texts.toPlain(text);
     }
 
    @Override
