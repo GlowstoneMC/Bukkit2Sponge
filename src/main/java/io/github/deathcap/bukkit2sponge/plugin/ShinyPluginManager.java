@@ -67,27 +67,7 @@ public class ShinyPluginManager implements PluginManager {
      * @return List of recognized SpongeAPI plugin URLs
      * @throws IOException
      */
-    public Collection<URL> loadPlugins() throws IOException {
-        File directory = Bukkit2Sponge.instance.getPluginsDirectory();
-
-        if (!directory.exists()) {
-            directory.mkdirs();
-        }
-
-        File[] files = directory.listFiles(new PatternFilenameFilter(".+\\.jar"));
-        if (files == null || files.length == 0) {
-            return new ArrayList<>();
-        }
-
-        List<URL> urls = new ArrayList<>(files.length);
-        for (File jar : files) {
-            try {
-                urls.add(jar.toURI().toURL());
-            } catch (MalformedURLException e) {
-                Bukkit2Sponge.instance.getLogger().warning("Malformed URL: " + jar + e);
-            }
-        }
-
+    public Collection<URL> loadPlugins(List<URL> urls) throws IOException {
         Collection<PluginContainer> containers = loader.loadPlugins(urls);
         for (PluginContainer container : containers) {
             if (plugins.containsKey(container.getId())) {
