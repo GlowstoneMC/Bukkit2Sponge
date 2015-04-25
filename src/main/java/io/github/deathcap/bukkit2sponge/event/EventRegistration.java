@@ -6,6 +6,7 @@ import org.spongepowered.api.event.Event;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.logging.Level;
 
 /**
  * Container for a single object listening for some event.
@@ -37,9 +38,9 @@ public final class EventRegistration {
             try {
                 method.invoke(object, event);
             } catch (InvocationTargetException e) {
-                Bukkit2Sponge.instance.getLogger().warning("Event error" + e.getTargetException());
+                Bukkit2Sponge.instance.getLogger().log(Level.WARNING, "Event error", e.getTargetException());
             } catch (IllegalAccessException e) {
-                Bukkit2Sponge.instance.getLogger().warning("Event error" + e);
+                Bukkit2Sponge.instance.getLogger().log(Level.WARNING, "Event error", e);
             }
         }
     }
