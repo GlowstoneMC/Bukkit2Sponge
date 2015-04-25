@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.deathcap</groupId>
   <artifactId>bukkit2sponge</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2-SNAPSHOT</version>
   <name>Bukkit2Sponge</name>
   <url>https://github.com/deathcap/Bukkit2Sponge</url>
 
