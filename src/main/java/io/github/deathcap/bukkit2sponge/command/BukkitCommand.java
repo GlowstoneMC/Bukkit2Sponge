@@ -4,6 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Optional;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.Texts;
 import org.spongepowered.api.util.command.*;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public class BukkitCommand extends Command {
 
     private CommandMapping commandMapping;
-    private static ShinyConsoleSource commandSource = new ShinyConsoleSource("console"); // TODO
+    private static ShinyConsoleSource consoleSource = new ShinyConsoleSource("console"); // TODO
 
     public BukkitCommand(CommandMapping commandMapping) {
         super(commandMapping.getPrimaryAlias(),
@@ -25,7 +26,7 @@ public class BukkitCommand extends Command {
     }
 
     private static String getDescription(CommandMapping commandMapping) {
-        Optional<Text> textOptional = commandMapping.getCallable().getShortDescription(commandSource);;
+        Optional<Text> textOptional = commandMapping.getCallable().getShortDescription(consoleSource);;
         if (!textOptional.isPresent()) {
             return commandMapping.getPrimaryAlias();
         }
@@ -34,15 +35,21 @@ public class BukkitCommand extends Command {
     }
 
     private static String getUsage(CommandMapping commandMapping) {
-        Text text = commandMapping.getCallable().getUsage(commandSource);;
+        Text text = commandMapping.getCallable().getUsage(consoleSource);;
 
         return Texts.toPlain(text);
     }
 
    @Override
     public boolean execute(CommandSender commandSender, String s, String[] strings) {
+        CommandSource commandSource;
 
-        //CommandSource commandSource = commandSource; // TODO: from commandSender
+        if (commandSender instanceof ConsoleCommandSender) {
+            commandSource = consoleSource;
+        } else {
+            commandSource = null; // TODO: players, etc.
+        }
+
         String arguments = Joiner.on(' ').join(strings); // TODO: ?
 
         try {
