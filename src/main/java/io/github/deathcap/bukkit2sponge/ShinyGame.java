@@ -2,6 +2,7 @@ package io.github.deathcap.bukkit2sponge;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import io.github.deathcap.bukkit2sponge.command.ShinyCommandService;
 import io.github.deathcap.bukkit2sponge.event.ShinyEventManager;
 import io.github.deathcap.bukkit2sponge.plugin.ShinyPluginManager;
 import org.spongepowered.api.*;
@@ -25,7 +26,7 @@ public class ShinyGame implements Game {
     private final ShinyEventManager eventManager = new ShinyEventManager();
     private final ShinyGameRegistry registry = new ShinyGameRegistry();
     private final SimpleServiceManager services = new SimpleServiceManager(pluginManager);
-    private final SimpleCommandService commands = new SimpleCommandService(this);
+    private final SimpleCommandService commands = new ShinyCommandService(this);
 
     private static final String API_VERSION;
     private static final String IMPL_VERSION;
