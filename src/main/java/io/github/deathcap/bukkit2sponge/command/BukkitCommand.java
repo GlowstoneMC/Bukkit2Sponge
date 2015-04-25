@@ -4,10 +4,9 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Optional;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.spongepowered.api.util.command.CommandException;
-import org.spongepowered.api.util.command.CommandMapping;
-import org.spongepowered.api.util.command.CommandResult;
-import org.spongepowered.api.util.command.CommandSource;
+import org.spongepowered.api.text.Text;
+import org.spongepowered.api.text.Texts;
+import org.spongepowered.api.util.command.*;
 
 import java.util.ArrayList;
 
@@ -18,14 +17,29 @@ public class BukkitCommand extends Command {
 
     public BukkitCommand(CommandMapping commandMapping) {
         super(commandMapping.getPrimaryAlias(),
-                commandMapping.getCallable().getShortDescription(commandSource).toString(),
-                commandMapping.getCallable().getUsage(commandSource).toString(),
+                getDescription(commandMapping),
+                getUsage(commandMapping),
                 new ArrayList<>(commandMapping.getAllAliases())); // TODO: remove primary alias?
 
         this.commandMapping = commandMapping;
     }
 
-    @Override
+    private static String getDescription(CommandMapping commandMapping) {
+        Optional<Text> textOptional = commandMapping.getCallable().getShortDescription(commandSource);;
+        if (!textOptional.isPresent()) {
+            return commandMapping.getPrimaryAlias();
+        }
+
+        return Texts.toPlain(textOptional.get());
+    }
+
+    private static String getUsage(CommandMapping commandMapping) {
+        Text text = commandMapping.getCallable().getUsage(commandSource);;
+
+        return Texts.toPlain(text);
+    }
+
+   @Override
     public boolean execute(CommandSender commandSender, String s, String[] strings) {
 
         //CommandSource commandSource = commandSource; // TODO: from commandSender
