@@ -1,7 +1,6 @@
 package io.github.deathcap.bukkit2sponge.command;
 
 import io.github.deathcap.bukkit2sponge.permission.ShinySubject;
-import org.spongepowered.api.service.permission.context.Context;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.Texts;
 import org.spongepowered.api.util.command.source.ConsoleSource;

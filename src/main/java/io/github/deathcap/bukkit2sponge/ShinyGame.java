@@ -6,6 +6,7 @@ import io.github.deathcap.bukkit2sponge.command.ShinyCommandService;
 import io.github.deathcap.bukkit2sponge.event.ShinyEventManager;
 import io.github.deathcap.bukkit2sponge.plugin.ShinyPluginManager;
 import io.github.deathcap.bukkit2sponge.text.ShinyTextFactory;
+import org.bukkit.Bukkit;
 import org.spongepowered.api.*;
 import org.spongepowered.api.service.ServiceManager;
 import org.spongepowered.api.service.SimpleServiceManager;
@@ -28,6 +29,7 @@ public class ShinyGame implements Game {
     private final ShinyGameRegistry registry = new ShinyGameRegistry();
     private final SimpleServiceManager services = new SimpleServiceManager(pluginManager);
     private final SimpleCommandService commands = new ShinyCommandService(this);
+    private final ShinyServer server = new ShinyServer(Bukkit.getServer());
 
     private static final String API_VERSION;
     private static final String IMPL_VERSION;
@@ -55,7 +57,7 @@ public class ShinyGame implements Game {
 
     @Override
     public Server getServer() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return server;
     }
 
     @Override

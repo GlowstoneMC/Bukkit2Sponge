@@ -2,6 +2,8 @@ package io.github.deathcap.bukkit2sponge.command;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Optional;
+import io.github.deathcap.bukkit2sponge.Bukkit2Sponge;
+import io.github.deathcap.bukkit2sponge.ShinyGame;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -14,7 +16,6 @@ import java.util.ArrayList;
 public class BukkitCommand extends Command {
 
     private CommandMapping commandMapping;
-    private static ShinyConsoleSource consoleSource = new ShinyConsoleSource("console"); // TODO
 
     public BukkitCommand(CommandMapping commandMapping) {
         super(commandMapping.getPrimaryAlias(),
@@ -26,7 +27,7 @@ public class BukkitCommand extends Command {
     }
 
     private static String getDescription(CommandMapping commandMapping) {
-        Optional<Text> textOptional = commandMapping.getCallable().getShortDescription(consoleSource);;
+        Optional<Text> textOptional = commandMapping.getCallable().getShortDescription(Bukkit2Sponge.instance.getGame().getServer().getConsole());
         if (!textOptional.isPresent()) {
             return commandMapping.getPrimaryAlias();
         }
@@ -35,7 +36,7 @@ public class BukkitCommand extends Command {
     }
 
     private static String getUsage(CommandMapping commandMapping) {
-        Text text = commandMapping.getCallable().getUsage(consoleSource);;
+        Text text = commandMapping.getCallable().getUsage(Bukkit2Sponge.instance.getGame().getServer().getConsole());
 
         return Texts.toPlain(text);
     }
@@ -45,7 +46,7 @@ public class BukkitCommand extends Command {
         CommandSource commandSource;
 
         if (commandSender instanceof ConsoleCommandSender) {
-            commandSource = consoleSource;
+            commandSource = Bukkit2Sponge.instance.getGame().getServer().getConsole();
         } else {
             commandSource = null; // TODO: players, etc.
         }
