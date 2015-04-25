@@ -7,7 +7,7 @@ An implementation of [SpongeAPI](https://github.com/SpongePowered/SpongeAPI) as 
 
 Bukkit2Sponge allows loading SpongeAPI plugins on Bukkit servers.
 
-Warning: very incomplete (bug reports and pull requests appreciated)
+Warning: very incomplete (bug reports and pull requests appreciated, see [issues](https://github.com/deathcap/Bukkit2Sponge/issues))
 
 Usage
 -----
@@ -16,6 +16,10 @@ Copy the plugin jar to the `plugins` directory of your Bukkit server.
 
 Run your server, the first time it will create a `plugins/Bukkit2Sponge/plugins` directory.
 You can place your SpongeAPI plugins here.
+
+If using the [Glowstone++](https://github.com/deathcap/GlowstonePlusPlus)
+server, you can alternatively place the SpongeAPI plugins in the top-level `plugins/` directory
+and they will be loaded by Bukkit2Sponge as well (requires build 226+).
 
 When starting the server, if configured correctly Bukkit2Sponge should log the SpongeAPI plugins it finds:
 
