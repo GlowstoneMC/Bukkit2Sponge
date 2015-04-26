@@ -51,6 +51,12 @@
       <artifactId>configurate-hocon</artifactId>
       <version>1.1</version>
     </dependency>
+    <dependency>
+      <groupId>net.md-5</groupId>
+      <artifactId>SpecialSource</artifactId>
+      <version>1.7.3</version>
+      <type>jar</type>
+    </dependency>
   </dependencies>
 
   <build>
@@ -87,6 +93,10 @@
                 </excludes>
               </artifactSet>
               <relocations>
+                <relocation>
+                  <pattern>com.google.common</pattern>
+                  <shadedPattern>io.github.deathcap.bukkit2sponge.libs.guava17.com.google.common</shadedPattern>
+                </relocation>
               </relocations>
             </configuration>
            </execution>
