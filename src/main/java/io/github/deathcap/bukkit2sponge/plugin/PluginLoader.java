@@ -50,10 +50,10 @@ final class PluginLoader {
     }
 
     private boolean loadJar(List<PluginContainer> result, URLClassLoader root, URL url) {
-        URLClassLoader classLoader = new URLClassLoader(new URL[]{url}, root);
         boolean hasPlugin = false;
 
-        try (InputStream fileIn = url.openStream();
+        try (ShinyClassLoader classLoader = new ShinyClassLoader(new URL[]{url}, root);
+             InputStream fileIn = url.openStream();
              ZipInputStream zipIn = new ZipInputStream(fileIn)
         ) {
             ZipEntry entryIn;
@@ -64,7 +64,7 @@ final class PluginLoader {
 
                     Class<?> clazz;
                     try {
-                        clazz = classLoader.loadClass(name);
+                        clazz = classLoader.findClass(name);
                     } catch (Throwable t) {
                         Bukkit2Sponge.instance.getLogger().log(Level.WARNING, "Error loading " + url.getFile() + "/" + name, t);
                         continue;
