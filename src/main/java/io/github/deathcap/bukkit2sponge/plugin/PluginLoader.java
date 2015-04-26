@@ -12,6 +12,7 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -65,7 +66,7 @@ final class PluginLoader {
                     try {
                         clazz = classLoader.loadClass(name);
                     } catch (Throwable t) {
-                        Bukkit2Sponge.instance.getLogger().warning("Error loading " + url.getFile() + "/" + name + t);
+                        Bukkit2Sponge.instance.getLogger().log(Level.WARNING, "Error loading " + url.getFile() + "/" + name, t);
                         continue;
                     }
 
@@ -91,7 +92,7 @@ final class PluginLoader {
                 ShinyPluginContainer container = new ShinyPluginContainer(clazz);
                 return container;
             } catch (Throwable t) {
-                Bukkit2Sponge.instance.getLogger().warning("Error initializing " + annotation.id() + " (" + clazz + ")" + t);
+                Bukkit2Sponge.instance.getLogger().log(Level.WARNING, "Error initializing " + annotation.id() + " (" + clazz + ")", t);
             }
         }
         return null;
