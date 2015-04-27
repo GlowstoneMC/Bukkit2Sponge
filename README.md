@@ -7,6 +7,9 @@ An implementation of [SpongeAPI](https://github.com/SpongePowered/SpongeAPI) as 
 
 Bukkit2Sponge allows loading SpongeAPI plugins on Bukkit servers.
 
+* [Bukkit2Sponge thread on Sponge Forums](https://forums.spongepowered.org/t/bukkit2sponge-an-implementation-of-spongeapi-for-bukkit-servers/6747)
+* [Bukkit2Sponge resource on SpigotMC](http://www.spigotmc.org/resources/bukkit2sponge.6368/)
+
 Warning: very incomplete (bug reports and pull requests appreciated, see [issues](https://github.com/deathcap/Bukkit2Sponge/issues))
 
 Usage
@@ -33,9 +36,9 @@ Downloads
 
 Latest builds are available from:
 
-* **[CircleCI downloads](https://circleci.com/gh/deathcap/Bukkit2Sponge/tree/master)** - click the latest build then expand "Artifacts" (if it does not show, try logging in with GitHub)
+* **[Latest development builds](https://circleci.com/gh/deathcap/Bukkit2Sponge/tree/master)** - click the latest build then expand "Artifacts" (if it does not show, try logging in with GitHub)
 [![Build Status](https://circleci.com/gh/deathcap/Bukkit2Sponge/tree/master.png)](https://circleci.com/gh/deathcap/Bukkit2Sponge/tree/master)
-
+* Releases also available on [Bukkit2Sponge resource on SpigotMC](http://www.spigotmc.org/resources/bukkit2sponge.6368/)
 
 
 Building from source
@@ -70,8 +73,9 @@ The plugin jar will be placed in `target/`.
 See also
 --------
 
-* [Bukkit2Sponge thread on Sponge Forums](https://forums.spongepowered.org/t/bukkit2sponge-an-implementation-of-spongeapi-for-bukkit-servers/6747)
-* [Pore](https://github.com/LapisBlue/Pore): a Sponge plugin to load Bukkit plugins (the opposite of Bukkit2Sponge)
+* [Sponge](https://github.com/SpongePowered/Sponge): SpongeAPI implementation on Minecraft Forge
+* [SpongeVanilla](https://github.com/SpongePowered/SpongeVanilla): SpongeAPI implementation on Minecraft
+* [Pore](https://github.com/LapisBlue/Pore): a SpongeAPI plugin to load Bukkit plugins (the opposite of Bukkit2Sponge)
 
 License
 -------
