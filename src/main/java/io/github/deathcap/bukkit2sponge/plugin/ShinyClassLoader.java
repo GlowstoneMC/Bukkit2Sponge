@@ -10,19 +10,24 @@ import java.net.URLClassLoader;
 import java.security.CodeSigner;
 import java.security.CodeSource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ShinyClassLoader extends URLClassLoader {
 
     private static DefaultShader shader = null;
 
     private final static String com_google_common = new String(new char[] {'c','o','m','/','g','o','o','g','l','e','/','c','o','m','m','o','n',});
-    private final static String inPrefix = com_google_common;
-    private final static String outPrefix = "io/github/deathcap/bukkit2sponge/libs/guava17/";
+
 
     static {
         try {
-            shader = new DefaultShader(inPrefix, outPrefix);
+            Map<String, String> replacements = new HashMap<>();
+
+            replacements.put(com_google_common, "io/github/deathcap/bukkit2sponge/libs/guava17/");
+
+            shader = new DefaultShader(replacements);
         } catch (IOException ex) {
             ex.printStackTrace();
         }

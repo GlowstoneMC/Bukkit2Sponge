@@ -26,6 +26,8 @@ package io.github.deathcap.bukkit2sponge.plugin;
 
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,9 +43,9 @@ public class DefaultShader
     private RelocatorRemapper remapper;
 
 
-    public DefaultShader( String inPrefix, String outPrefix) throws IOException
+    public DefaultShader( Map<String, String> replacements) throws IOException
     {
-        this.remapper = new RelocatorRemapper(inPrefix, outPrefix);
+        this.remapper = new RelocatorRemapper(replacements);
 
     }
 
@@ -98,13 +100,11 @@ public class DefaultShader
     {
 
         private final Pattern classPattern = Pattern.compile( "(\\[*)?L(.+);" );
-        private final String inPrefix;
-        private final String outPrefix;
+        private final Map<String, String> replacements;
 
-        public RelocatorRemapper(String inPrefix, String outPrefix)
+        public RelocatorRemapper(Map<String, String> replacements)
         {
-            this.inPrefix = inPrefix;
-            this.outPrefix = outPrefix;
+            this.replacements = replacements;
         }
 
         @Override
@@ -137,11 +137,17 @@ public class DefaultShader
         @Override
         public String map( String name )
         {
-            if (name.startsWith(inPrefix)) {
-                return outPrefix + name;
-            } else {
-                return name;
+            Iterator it = replacements.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+                String inPrefix = (String) pair.getKey();
+                String outPrefix = (String) pair.getValue();
+
+                if (name.startsWith(inPrefix)) {
+                    return outPrefix + name;
+                }
             }
+            return name;
         }
 
     }
