@@ -12,6 +12,7 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -49,10 +50,10 @@ final class PluginLoader {
     }
 
     private boolean loadJar(List<PluginContainer> result, URLClassLoader root, URL url) {
-        URLClassLoader classLoader = new URLClassLoader(new URL[]{url}, root);
         boolean hasPlugin = false;
 
-        try (InputStream fileIn = url.openStream();
+        try (ShinyClassLoader classLoader = new ShinyClassLoader(new URL[]{url}, root);
+             InputStream fileIn = url.openStream();
              ZipInputStream zipIn = new ZipInputStream(fileIn)
         ) {
             ZipEntry entryIn;
@@ -63,9 +64,9 @@ final class PluginLoader {
 
                     Class<?> clazz;
                     try {
-                        clazz = classLoader.loadClass(name);
+                        clazz = classLoader.findClass(name);
                     } catch (Throwable t) {
-                        Bukkit2Sponge.instance.getLogger().warning("Error loading " + url.getFile() + "/" + name + t);
+                        Bukkit2Sponge.instance.getLogger().log(Level.WARNING, "Error loading " + url.getFile() + "/" + name, t);
                         continue;
                     }
 
@@ -91,7 +92,7 @@ final class PluginLoader {
                 ShinyPluginContainer container = new ShinyPluginContainer(clazz);
                 return container;
             } catch (Throwable t) {
-                Bukkit2Sponge.instance.getLogger().warning("Error initializing " + annotation.id() + " (" + clazz + ")" + t);
+                Bukkit2Sponge.instance.getLogger().log(Level.WARNING, "Error initializing " + annotation.id() + " (" + clazz + ")", t);
             }
         }
         return null;
