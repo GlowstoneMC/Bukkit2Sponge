@@ -26,7 +26,6 @@ package io.github.deathcap.bukkit2sponge.plugin;
 
 
 import java.io.IOException;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,14 +40,10 @@ public class DefaultShader
 {
     private RelocatorRemapper remapper;
 
-    private final static String com_google_common = new String(new char[] {'c','o','m','/','g','o','o','g','l','e','/','c','o','m','m','o','n',});
 
-    private final static String inPrefix = com_google_common;
-    private final static String outPrefix = "io/github/deathcap/bukkit2sponge/libs/guava17/";
-
-    public DefaultShader( List<Relocator> relocators ) throws IOException
+    public DefaultShader( String inPrefix, String outPrefix) throws IOException
     {
-        this.remapper = new RelocatorRemapper( relocators );
+        this.remapper = new RelocatorRemapper(inPrefix, outPrefix);
 
     }
 
@@ -110,19 +105,16 @@ public class DefaultShader
     {
 
         private final Pattern classPattern = Pattern.compile( "(\\[*)?L(.+);" );
+        private final String inPrefix;
+        private final String outPrefix;
 
-        List<Relocator> relocators;
-
-        public RelocatorRemapper( List<Relocator> relocators )
+        public RelocatorRemapper(String inPrefix, String outPrefix)
         {
-            this.relocators = relocators;
+            this.inPrefix = inPrefix;
+            this.outPrefix = outPrefix;
         }
 
-        public boolean hasRelocators()
-        {
-            return !relocators.isEmpty();
-        }
-
+        @Override
         public Object mapValue( Object object )
         {
             if ( object instanceof String )
@@ -141,19 +133,7 @@ public class DefaultShader
                     name = m.group( 2 );
                 }
 
-                for ( Relocator r : relocators )
-                {
-                    if ( r.canRelocateClass( name ) )
-                    {
-                        value = prefix + r.relocateClass( name ) + suffix;
-                        break;
-                    }
-                    else if ( r.canRelocatePath( name ) )
-                    {
-                        value = prefix + r.relocatePath( name ) + suffix;
-                        break;
-                    }
-                }
+                value = map( name );
 
                 return value;
             }
@@ -161,7 +141,7 @@ public class DefaultShader
             return super.mapValue( object );
         }
 
-
+        @Override
         public String map( String name )
         {
             if (name.startsWith(inPrefix)) {

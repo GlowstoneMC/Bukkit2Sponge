@@ -2,7 +2,6 @@ package io.github.deathcap.bukkit2sponge.plugin;
 
 import com.google.common.io.ByteStreams;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.JarURLConnection;
@@ -17,13 +16,13 @@ public class ShinyClassLoader extends URLClassLoader {
 
     private static DefaultShader shader = null;
 
-    static {
-        List<Relocator> relocators = new ArrayList<>();
-        Relocator relocator = new Relocator("com/google/common", "io/github/deathcap/bukkit2sponge/libs/guava17/com/google/common", null, null, true);
-        relocators.add(relocator);
+    private final static String com_google_common = new String(new char[] {'c','o','m','/','g','o','o','g','l','e','/','c','o','m','m','o','n',});
+    private final static String inPrefix = com_google_common;
+    private final static String outPrefix = "io/github/deathcap/bukkit2sponge/libs/guava17/";
 
+    static {
         try {
-            shader = new DefaultShader(relocators);
+            shader = new DefaultShader(inPrefix, outPrefix);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
