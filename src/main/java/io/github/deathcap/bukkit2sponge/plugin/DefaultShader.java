@@ -52,15 +52,8 @@ public class DefaultShader
     {
 
         ClassReader cr = new ClassReader( is );
+        ClassWriter cw = new ClassWriter( cr, 0 );
 
-        // We don't pass the ClassReader here. This forces the ClassWriter to rebuild the constant pool.
-        // Copying the original constant pool should be avoided because it would keep references
-        // to the original class names. This is not a problem at runtime (because these entries in the
-        // constant pool are never used), but confuses some tools such as Felix' maven-bundle-plugin
-        // that use the constant pool to determine the dependencies of a class.
-        ClassWriter cw = new ClassWriter( 0 );
-
-        //final String pkg = name.substring( 0, name.lastIndexOf( '/' ) + 1 );
         ClassVisitor cv = new RemappingClassAdapter( cw, remapper )
         {
             /*
