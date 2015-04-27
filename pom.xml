@@ -97,9 +97,14 @@
                 </excludes>
               </artifactSet>
               <relocations>
+                <!-- SpongeAPI library relocations - note: must match plugin relocations in ShinyClassLoader -->
                 <relocation>
                   <pattern>com.google.common</pattern>
                   <shadedPattern>io.github.deathcap.bukkit2sponge.libs.guava17.com.google.common</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.objectweb.asm</pattern>
+                  <shadedPattern>io.github.deathcap.bukkit2sponge.libs.asm5.org.objectweb.asm</shadedPattern>
                 </relocation>
               </relocations>
             </configuration>

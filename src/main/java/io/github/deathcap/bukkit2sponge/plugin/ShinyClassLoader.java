@@ -18,14 +18,16 @@ public class ShinyClassLoader extends URLClassLoader {
 
     private static DefaultShader shader = null;
 
-    private final static String com_google_common = new String(new char[] {'c','o','m','/','g','o','o','g','l','e','/','c','o','m','m','o','n',});
-
+    private final static String com_google_common = new String(new char[] {'c','o','m','/','g','o','o','g','l','e','/','c','o','m','m','o','n'});
+    private final static String org_objectweb_asm = new String(new char[] {'o','r','g','/','o','b','j','e','c','t','w','e','b','/','a','s','m'});
 
     static {
         try {
             Map<String, String> replacements = new HashMap<>();
 
+            // SpongeAPI library relocations - note: must match pom.xml relocations
             replacements.put(com_google_common, "io/github/deathcap/bukkit2sponge/libs/guava17/");
+            replacements.put(org_objectweb_asm, "io/github/deathcap/bukkit2sponge/libs/asm5/");
 
             shader = new DefaultShader(replacements);
         } catch (IOException ex) {
