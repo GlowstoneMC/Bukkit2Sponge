@@ -3,14 +3,14 @@ Bukkit2Sponge
 
 An implementation of [SpongeAPI](https://github.com/SpongePowered/SpongeAPI) as a Bukkit plugin.
 
-[![Build Status](https://circleci.com/gh/deathcap/Bukkit2Sponge/tree/master.png)](https://circleci.com/gh/deathcap/Bukkit2Sponge/tree/master)
+[![Build Status](https://circleci.com/gh/GlowstonePlusPlus/Bukkit2Sponge/tree/master.png)](https://circleci.com/gh/GlowstonePlusPlus/Bukkit2Sponge/tree/master)
 
 Bukkit2Sponge allows loading SpongeAPI plugins on Bukkit servers.
 
 * [Bukkit2Sponge thread on Sponge Forums](https://forums.spongepowered.org/t/bukkit2sponge-an-implementation-of-spongeapi-for-bukkit-servers/6747)
 * [Bukkit2Sponge resource on SpigotMC](http://www.spigotmc.org/resources/bukkit2sponge.6368/)
 
-Warning: very incomplete (bug reports and pull requests appreciated, see [issues](https://github.com/deathcap/Bukkit2Sponge/issues))
+Warning: very incomplete (bug reports and pull requests appreciated, see [issues](https://github.com/GlowstonePlusPlus/Bukkit2Sponge/issues))
 
 Usage
 -----
@@ -20,7 +20,7 @@ Copy the plugin jar to the `plugins` directory of your Bukkit server.
 Run your server, the first time it will create a `plugins/Bukkit2Sponge/plugins` directory.
 You can place your SpongeAPI plugins here.
 
-If using the [Glowstone++](https://github.com/deathcap/GlowstonePlusPlus)
+If using the [Glowstone++](https://github.com/GlowstonePlusPlus/GlowstonePlusPlus)
 server, you can alternatively place the SpongeAPI plugins in the top-level `plugins/` directory
 and they will be loaded by Bukkit2Sponge as well (requires build 226+).
 
@@ -36,8 +36,8 @@ Downloads
 
 Latest builds are available from:
 
-* **[Latest development builds](https://circleci.com/gh/deathcap/Bukkit2Sponge/tree/master)** - click the latest build then expand "Artifacts" (if it does not show, try logging in with GitHub)
-[![Build Status](https://circleci.com/gh/deathcap/Bukkit2Sponge/tree/master.png)](https://circleci.com/gh/deathcap/Bukkit2Sponge/tree/master)
+* **[Latest development builds](https://circleci.com/gh/GlowstonePlusPlus/Bukkit2Sponge/tree/master)** - click the latest build then expand "Artifacts" (if it does not show, try logging in with GitHub)
+[![Build Status](https://circleci.com/gh/GlowstonePlusPlus/Bukkit2Sponge/tree/master.png)](https://circleci.com/gh/GlowstonePlusPlus/Bukkit2Sponge/tree/master)
 * Releases also available on [Bukkit2Sponge resource on SpigotMC](http://www.spigotmc.org/resources/bukkit2sponge.6368/)
 
 
@@ -49,7 +49,7 @@ Building from source
 [Maven](https://maven.apache.org), checkout the source:
 
 ```
-git clone --recursive https://github.com/deathcap/Bukkit2Sponge
+git clone --recursive https://github.com/GlowstonePlusPlus/Bukkit2Sponge
 cd Bukkit2Sponge
 ```
 
