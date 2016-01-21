@@ -2,7 +2,6 @@ package io.github.deathcap.bukkit2sponge.text;
 
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.TextFactory;
-import org.spongepowered.api.text.Texts;
 import org.spongepowered.api.text.translation.Translation;
 
 import java.lang.reflect.Field;

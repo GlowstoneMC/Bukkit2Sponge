@@ -4,10 +4,8 @@ import com.google.common.base.Optional;
 import io.github.deathcap.bukkit2sponge.command.ShinyConsoleSource;
 import org.spongepowered.api.Server;
 import org.spongepowered.api.entity.living.player.Player;
-import org.spongepowered.api.net.ChannelListener;
-import org.spongepowered.api.net.ChannelRegistrationException;
+import org.spongepowered.api.network.ChannelRegistrationException;
 import org.spongepowered.api.text.Text;
-import org.spongepowered.api.text.Texts;
 import org.spongepowered.api.util.command.source.ConsoleSource;
 import org.spongepowered.api.world.World;
 import org.spongepowered.api.world.WorldCreationSettings;
@@ -150,7 +148,7 @@ public class ShinyServer implements Server {
 
     @Override
     public Text getMotd() {
-        return Texts.of(handle.getMotd());
+        return Text.of(handle.getMotd());
     }
 
     @Override
