@@ -9,26 +9,39 @@ import org.spongepowered.api.attribute.*;
 import org.spongepowered.api.block.BlockType;
 import org.spongepowered.api.data.DataManipulatorRegistry;
 import org.spongepowered.api.data.types.*;
+import org.spongepowered.api.data.value.ValueFactory;
 import org.spongepowered.api.effect.particle.ParticleEffectBuilder;
 import org.spongepowered.api.effect.particle.ParticleType;
 import org.spongepowered.api.entity.EntityType;
+import org.spongepowered.api.entity.ai.task.AITaskType;
+import org.spongepowered.api.entity.ai.task.AbstractAITask;
+import org.spongepowered.api.entity.living.Agent;
 import org.spongepowered.api.item.*;
 import org.spongepowered.api.item.inventory.ItemStackBuilder;
 import org.spongepowered.api.item.merchant.TradeOfferBuilder;
 import org.spongepowered.api.item.recipe.RecipeRegistry;
+import org.spongepowered.api.network.status.Favicon;
 import org.spongepowered.api.potion.PotionEffectBuilder;
+import org.spongepowered.api.registry.CatalogRegistryModule;
+import org.spongepowered.api.registry.RegistryModule;
 import org.spongepowered.api.resourcepack.ResourcePack;
 import org.spongepowered.api.scoreboard.ScoreboardBuilder;
 import org.spongepowered.api.scoreboard.TeamBuilder;
 import org.spongepowered.api.scoreboard.displayslot.DisplaySlot;
 import org.spongepowered.api.scoreboard.objective.ObjectiveBuilder;
+import org.spongepowered.api.statistic.EntityStatistic;
+import org.spongepowered.api.statistic.StatisticGroup;
 import org.spongepowered.api.stats.*;
 import org.spongepowered.api.stats.achievement.AchievementBuilder;
 import org.spongepowered.api.status.Favicon;
 import org.spongepowered.api.text.format.TextColor;
+import org.spongepowered.api.text.selector.SelectorFactory;
+import org.spongepowered.api.text.serializer.TextSerializerFactory;
 import org.spongepowered.api.text.translation.Translation;
+import org.spongepowered.api.util.ResettableBuilder;
 import org.spongepowered.api.util.rotation.Rotation;
 import org.spongepowered.api.world.WorldBuilder;
+import org.spongepowered.api.world.extent.ExtentBufferFactory;
 import org.spongepowered.api.world.gen.PopulatorFactory;
 import org.spongepowered.api.world.gen.WorldGeneratorModifier;
 
@@ -37,7 +50,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.*;
+import java.util.function.Supplier;
 
 /**
  * Implementation of {@link GameRegistry}.
@@ -69,6 +84,31 @@ public class ShinyGameRegistry implements GameRegistry {
     @Override
     public <T extends CatalogType> Collection<? extends T> getAllOf(Class<T> tClass) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public <T extends CatalogType> GameRegistry registerModule(Class<T> aClass, CatalogRegistryModule<T> catalogRegistryModule) throws IllegalArgumentException, UnsupportedOperationException {
+        return null;
+    }
+
+    @Override
+    public GameRegistry registerModule(RegistryModule registryModule) throws IllegalArgumentException, UnsupportedOperationException {
+        return null;
+    }
+
+    @Override
+    public <T> GameRegistry registerBuilderSupplier(Class<T> aClass, Supplier<? extends T> supplier) {
+        return null;
+    }
+
+    @Override
+    public <T extends ResettableBuilder<?, ? super T>> T createBuilder(Class<T> aClass) throws IllegalArgumentException {
+        return null;
+    }
+
+    @Override
+    public <T extends CatalogType> void register(Class<T> aClass, T t) throws IllegalArgumentException, UnsupportedOperationException {
+
     }
 
     @Override
@@ -130,6 +170,11 @@ public class ShinyGameRegistry implements GameRegistry {
     @Override
     public Collection<String> getDefaultGameRules() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public java.util.Optional<EntityStatistic> getEntityStatistic(StatisticGroup statisticGroup, EntityType entityType) {
+        return null;
     }
 
     @Override
@@ -198,6 +243,11 @@ public class ShinyGameRegistry implements GameRegistry {
     }
 
     @Override
+    public Favicon loadFavicon(Path path) throws IOException {
+        return null;
+    }
+
+    @Override
     public Favicon loadFavicon(File file) throws IOException {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -225,6 +275,11 @@ public class ShinyGameRegistry implements GameRegistry {
     @Override
     public RecipeRegistry getRecipeRegistry() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public java.util.Optional<ResourcePack> getResourcePackById(String s) {
+        return null;
     }
 
     @Override
@@ -260,6 +315,36 @@ public class ShinyGameRegistry implements GameRegistry {
     @Override
     public Optional<DisplaySlot> getDisplaySlotForColor(TextColor color) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public AITaskType registerAITaskType(Object o, String s, String s1, Class<? extends AbstractAITask<? extends Agent>> aClass) {
+        return null;
+    }
+
+    @Override
+    public ExtentBufferFactory getExtentBufferFactory() {
+        return null;
+    }
+
+    @Override
+    public ValueFactory getValueFactory() {
+        return null;
+    }
+
+    @Override
+    public TextSerializerFactory getTextSerializerFactory() {
+        return null;
+    }
+
+    @Override
+    public SelectorFactory getSelectorFactory() {
+        return null;
+    }
+
+    @Override
+    public Locale getLocale(String s) {
+        return null;
     }
 
     @Override

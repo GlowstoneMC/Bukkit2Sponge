@@ -35,6 +35,16 @@ public class ShinySubject implements Subject {
     }
 
     @Override
+    public SubjectData getSubjectData() {
+        return null;
+    }
+
+    @Override
+    public SubjectData getTransientSubjectData() {
+        return null;
+    }
+
+    @Override
     public SubjectData getData() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }

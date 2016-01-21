@@ -1,6 +1,7 @@
 package io.github.deathcap.bukkit2sponge.item;
 
 import com.google.common.base.Optional;
+import org.spongepowered.api.block.BlockType;
 import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.data.Property;
 import org.spongepowered.api.text.translation.Translation;
@@ -19,6 +20,11 @@ public class ShinyItemType implements ItemType {
     @Override
     public String getId() {
         return id;
+    }
+
+    @Override
+    public java.util.Optional<BlockType> getBlock() {
+        return null;
     }
 
     @Override
