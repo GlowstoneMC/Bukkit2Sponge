@@ -8,7 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.spongepowered.api.text.Text;
-import org.spongepowered.api.util.command.*;
+import org.spongepowered.api.command.*;
 
 import java.util.ArrayList;
 

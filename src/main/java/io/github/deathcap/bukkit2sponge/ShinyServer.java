@@ -6,7 +6,7 @@ import org.spongepowered.api.Server;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.network.ChannelRegistrationException;
 import org.spongepowered.api.text.Text;
-import org.spongepowered.api.util.command.source.ConsoleSource;
+import org.spongepowered.api.command.source.ConsoleSource;
 import org.spongepowered.api.world.World;
 import org.spongepowered.api.world.WorldCreationSettings;
 import org.spongepowered.api.world.storage.ChunkLayout;

@@ -2,7 +2,7 @@ package io.github.deathcap.bukkit2sponge.command;
 
 import io.github.deathcap.bukkit2sponge.permission.ShinySubject;
 import org.spongepowered.api.text.Text;
-import org.spongepowered.api.util.command.source.ConsoleSource;
+import org.spongepowered.api.command.source.ConsoleSource;
 
 import java.util.Set;
 
