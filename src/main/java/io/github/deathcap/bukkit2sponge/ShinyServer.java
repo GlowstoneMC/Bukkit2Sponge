@@ -3,7 +3,7 @@ package io.github.deathcap.bukkit2sponge;
 import com.google.common.base.Optional;
 import io.github.deathcap.bukkit2sponge.command.ShinyConsoleSource;
 import org.spongepowered.api.Server;
-import org.spongepowered.api.entity.player.Player;
+import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.net.ChannelListener;
 import org.spongepowered.api.net.ChannelRegistrationException;
 import org.spongepowered.api.text.Text;
