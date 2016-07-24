@@ -20,15 +20,15 @@ Copy the plugin jar to the `plugins` directory of your Bukkit server.
 Run your server, the first time it will create a `plugins/Bukkit2Sponge/plugins` directory.
 You can place your SpongeAPI plugins here.
 
-If using the [Glowstone++](https://github.com/GlowstonePlusPlus/GlowstonePlusPlus)
+If using the [Glowstone](https://github.com/GlowstoneMC/Glowstone)
 server, you can alternatively place the SpongeAPI plugins in the top-level `plugins/` directory
-and they will be loaded by Bukkit2Sponge as well (requires build 226+).
+and they will be loaded by Bukkit2Sponge as well.
 
 When starting the server, if configured correctly Bukkit2Sponge should log the SpongeAPI plugins it finds:
 
 ```
-17:52:00 [INFO] [Bukkit2Sponge] Loading plugins...
-17:52:00 [INFO] [Bukkit2Sponge] Initializing 1 SpongeAPI plugins...
+12:00:00 [INFO] [Bukkit2Sponge] Loading plugins...
+12:00:00 [INFO] [Bukkit2Sponge] Initializing 1 SpongeAPI plugins...
 ```
 
 Downloads
@@ -36,8 +36,7 @@ Downloads
 
 Latest builds are available from:
 
-* **[Latest development builds](https://circleci.com/gh/GlowstonePlusPlus/Bukkit2Sponge/tree/master)** - click the latest build then expand "Artifacts" (if it does not show, try logging in with GitHub)
-[![Build Status](https://circleci.com/gh/GlowstonePlusPlus/Bukkit2Sponge/tree/master.png)](https://circleci.com/gh/GlowstonePlusPlus/Bukkit2Sponge/tree/master)
+* [![Build Status](https://circleci.com/gh/GlowstonePlusPlus/Bukkit2Sponge/tree/master.png)](https://circleci.com/gh/GlowstoneMC/Bukkit2Sponge/tree/master) **[Latest development builds](https://circleci.com/gh/GlowstoneMC/Bukkit2Sponge/tree/master)** - click the latest build then expand "Artifacts" (if it does not show, try logging in with GitHub)
 * Releases also available on [Bukkit2Sponge resource on SpigotMC](http://www.spigotmc.org/resources/bukkit2sponge.6368/)
 
 
@@ -49,7 +48,7 @@ Building from source
 [Maven](https://maven.apache.org), checkout the source:
 
 ```
-git clone --recursive https://github.com/GlowstonePlusPlus/Bukkit2Sponge
+git clone --recursive https://github.com/GlowstoneMC/Bukkit2Sponge
 cd Bukkit2Sponge
 ```
 
@@ -86,3 +85,5 @@ the `LICENSE` file for details.
 Bukkit is open-source software released under the GPL license. Please see
 the `LICENSE.txt` file in the Bukkit repository for details.
 
+Sponge is open-source software released under the MIT license. Please see 
+the `LICENSE.txt` file in the Sponge repository for details.
