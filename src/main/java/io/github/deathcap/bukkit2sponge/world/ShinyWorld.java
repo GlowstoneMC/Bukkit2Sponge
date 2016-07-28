@@ -10,23 +10,36 @@ import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.block.BlockType;
 import org.spongepowered.api.block.ScheduledBlockUpdate;
 import org.spongepowered.api.block.tile.TileEntity;
+import org.spongepowered.api.block.tileentity.TileEntity;
 import org.spongepowered.api.data.*;
+import org.spongepowered.api.data.key.Key;
+import org.spongepowered.api.data.manipulator.DataManipulator;
+import org.spongepowered.api.data.merge.MergeFunction;
+import org.spongepowered.api.data.value.BaseValue;
+import org.spongepowered.api.data.value.immutable.ImmutableValue;
 import org.spongepowered.api.effect.particle.ParticleEffect;
 import org.spongepowered.api.effect.sound.SoundType;
 import org.spongepowered.api.entity.Entity;
+import org.spongepowered.api.entity.EntitySnapshot;
 import org.spongepowered.api.entity.EntityType;
+import org.spongepowered.api.event.cause.Cause;
 import org.spongepowered.api.item.inventory.ItemStack;
 import org.spongepowered.api.scoreboard.Scoreboard;
-import org.spongepowered.api.service.permission.context.Context;
+import org.spongepowered.api.service.context.Context;
 import org.spongepowered.api.service.persistence.InvalidDataException;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.chat.ChatType;
 import org.spongepowered.api.text.title.Title;
 import org.spongepowered.api.util.Direction;
+import org.spongepowered.api.util.DiscreteTransform2;
+import org.spongepowered.api.util.DiscreteTransform3;
+import org.spongepowered.api.util.persistence.InvalidDataException;
 import org.spongepowered.api.world.*;
 import org.spongepowered.api.world.biome.BiomeType;
 import org.spongepowered.api.world.difficulty.Difficulties;
 import org.spongepowered.api.world.difficulty.Difficulty;
+import org.spongepowered.api.world.explosion.Explosion;
+import org.spongepowered.api.world.extent.*;
 import org.spongepowered.api.world.gen.WorldGenerator;
 import org.spongepowered.api.world.storage.WorldProperties;
 import org.spongepowered.api.world.storage.WorldStorage;
@@ -35,6 +48,7 @@ import org.spongepowered.api.world.weather.Weathers;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 public class ShinyWorld implements World {
@@ -70,13 +84,38 @@ public class ShinyWorld implements World {
     }
 
     @Override
+    public Extent getExtentView(Vector3i vector3i, Vector3i vector3i1) {
+        return null;
+    }
+
+    @Override
+    public Extent getExtentView(DiscreteTransform3 discreteTransform3) {
+        return null;
+    }
+
+    @Override
+    public Extent getRelativeExtentView() {
+        return null;
+    }
+
+    @Override
     public Optional<Chunk> getChunk(Vector3i position) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
+    public java.util.Optional<Chunk> getChunk(int i, int i1, int i2) {
+        return null;
+    }
+
+    @Override
     public Optional<Chunk> loadChunk(Vector3i position, boolean shouldGenerate) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public java.util.Optional<Chunk> loadChunk(int i, int i1, int i2, boolean b) {
+        return null;
     }
 
     @Override
@@ -97,6 +136,11 @@ public class ShinyWorld implements World {
     @Override
     public WorldBorder getWorldBorder() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public WorldBorder.ChunkPreGenerate newChunkPreGenerate(Vector3d vector3d, double v) {
+        return null;
     }
 
     @Override
@@ -165,6 +209,16 @@ public class ShinyWorld implements World {
     }
 
     @Override
+    public void triggerExplosion(Explosion explosion) {
+
+    }
+
+    @Override
+    public TeleporterAgent getTeleporterAgent() {
+        return null;
+    }
+
+    @Override
     public int getHeight() {
         return this.handle.getMaxHeight();
     }
@@ -205,6 +259,26 @@ public class ShinyWorld implements World {
     }
 
     @Override
+    public UnmodifiableBlockVolume getUnmodifiableBlockView() {
+        return null;
+    }
+
+    @Override
+    public MutableBlockVolume getBlockCopy() {
+        return null;
+    }
+
+    @Override
+    public MutableBlockVolume getBlockCopy(StorageType storageType) {
+        return null;
+    }
+
+    @Override
+    public ImmutableBlockVolume getImmutableBlockCopy() {
+        return null;
+    }
+
+    @Override
     public void setBlockType(Vector3i position, BlockType type) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -212,6 +286,21 @@ public class ShinyWorld implements World {
     @Override
     public void setBlockType(int x, int y, int z, BlockType type) {
         //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public MutableBlockVolume getBlockView(Vector3i vector3i, Vector3i vector3i1) {
+        return null;
+    }
+
+    @Override
+    public MutableBlockVolume getBlockView(DiscreteTransform3 discreteTransform3) {
+        return null;
+    }
+
+    @Override
+    public MutableBlockVolume getRelativeBlockView() {
+        return null;
     }
 
     @Override
@@ -415,6 +504,51 @@ public class ShinyWorld implements World {
     }
 
     @Override
+    public void setBlock(Vector3i vector3i, BlockState blockState, boolean b) {
+
+    }
+
+    @Override
+    public void setBlock(int i, int i1, int i2, BlockState blockState, boolean b) {
+
+    }
+
+    @Override
+    public void setBlockType(Vector3i vector3i, BlockType blockType, boolean b) {
+
+    }
+
+    @Override
+    public void setBlockType(int i, int i1, int i2, BlockType blockType, boolean b) {
+
+    }
+
+    @Override
+    public BlockSnapshot createSnapshot(Vector3i vector3i) {
+        return null;
+    }
+
+    @Override
+    public BlockSnapshot createSnapshot(int i, int i1, int i2) {
+        return null;
+    }
+
+    @Override
+    public boolean restoreSnapshot(BlockSnapshot blockSnapshot, boolean b, boolean b1) {
+        return false;
+    }
+
+    @Override
+    public boolean restoreSnapshot(Vector3i vector3i, BlockSnapshot blockSnapshot, boolean b, boolean b1) {
+        return false;
+    }
+
+    @Override
+    public boolean restoreSnapshot(int i, int i1, int i2, BlockSnapshot blockSnapshot, boolean b, boolean b1) {
+        return false;
+    }
+
+    @Override
     public Collection<ScheduledBlockUpdate> getScheduledUpdates(Vector3i position) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -505,6 +639,86 @@ public class ShinyWorld implements World {
     }
 
     @Override
+    public <E> java.util.Optional<E> get(int i, int i1, int i2, Key<? extends BaseValue<E>> key) {
+        return null;
+    }
+
+    @Override
+    public <T extends DataManipulator<?, ?>> java.util.Optional<T> get(int i, int i1, int i2, Class<T> aClass) {
+        return null;
+    }
+
+    @Override
+    public <T extends DataManipulator<?, ?>> java.util.Optional<T> getOrCreate(int i, int i1, int i2, Class<T> aClass) {
+        return null;
+    }
+
+    @Override
+    public <E, V extends BaseValue<E>> java.util.Optional<V> getValue(int i, int i1, int i2, Key<V> key) {
+        return null;
+    }
+
+    @Override
+    public boolean supports(int i, int i1, int i2, Key<?> key) {
+        return false;
+    }
+
+    @Override
+    public boolean supports(int i, int i1, int i2, Class<? extends DataManipulator<?, ?>> aClass) {
+        return false;
+    }
+
+    @Override
+    public Set<Key<?>> getKeys(int i, int i1, int i2) {
+        return null;
+    }
+
+    @Override
+    public Set<ImmutableValue<?>> getValues(int i, int i1, int i2) {
+        return null;
+    }
+
+    @Override
+    public <E> DataTransactionResult offer(int i, int i1, int i2, Key<? extends BaseValue<E>> key, E e) {
+        return null;
+    }
+
+    @Override
+    public DataTransactionResult offer(int i, int i1, int i2, DataManipulator<?, ?> dataManipulator, MergeFunction mergeFunction) {
+        return null;
+    }
+
+    @Override
+    public DataTransactionResult remove(int i, int i1, int i2, Class<? extends DataManipulator<?, ?>> aClass) {
+        return null;
+    }
+
+    @Override
+    public DataTransactionResult remove(int i, int i1, int i2, Key<?> key) {
+        return null;
+    }
+
+    @Override
+    public DataTransactionResult undo(int i, int i1, int i2, DataTransactionResult dataTransactionResult) {
+        return null;
+    }
+
+    @Override
+    public DataTransactionResult copyFrom(int i, int i1, int i2, DataHolder dataHolder) {
+        return null;
+    }
+
+    @Override
+    public DataTransactionResult copyFrom(int i, int i1, int i2, DataHolder dataHolder, MergeFunction mergeFunction) {
+        return null;
+    }
+
+    @Override
+    public DataTransactionResult copyFrom(int i, int i1, int i2, int i3, int i4, int i5, MergeFunction mergeFunction) {
+        return null;
+    }
+
+    @Override
     public Collection<? extends DataManipulator<?>> getManipulators(Vector3i position) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -512,6 +726,16 @@ public class ShinyWorld implements World {
     @Override
     public Collection<? extends DataManipulator<?>> getManipulators(int x, int y, int z) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public boolean validateRawData(int i, int i1, int i2, DataView dataView) {
+        return false;
+    }
+
+    @Override
+    public void setRawData(int i, int i1, int i2, DataView dataView) throws InvalidDataException {
+
     }
 
     @Override
@@ -525,6 +749,11 @@ public class ShinyWorld implements World {
     }
 
     @Override
+    public <T extends Property<?, ?>> java.util.Optional<T> getProperty(int i, int i1, int i2, Direction direction, Class<T> aClass) {
+        return null;
+    }
+
+    @Override
     public Collection<? extends Property<?, ?>> getProperties(Vector3i position) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -532,6 +761,11 @@ public class ShinyWorld implements World {
     @Override
     public Collection<? extends Property<?, ?>> getProperties(int x, int y, int z) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public Collection<Direction> getFacesWithProperty(int i, int i1, int i2, Class<? extends Property<?, ?>> aClass) {
+        return null;
     }
 
     @Override
@@ -570,6 +804,16 @@ public class ShinyWorld implements World {
     }
 
     @Override
+    public boolean containsBiome(Vector2i vector2i) {
+        return false;
+    }
+
+    @Override
+    public boolean containsBiome(int i, int i1) {
+        return false;
+    }
+
+    @Override
     public BiomeType getBiome(Vector2i position) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -577,6 +821,26 @@ public class ShinyWorld implements World {
     @Override
     public BiomeType getBiome(int x, int z) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public UnmodifiableBiomeArea getUnmodifiableBiomeView() {
+        return null;
+    }
+
+    @Override
+    public MutableBiomeArea getBiomeCopy() {
+        return null;
+    }
+
+    @Override
+    public MutableBiomeArea getBiomeCopy(StorageType storageType) {
+        return null;
+    }
+
+    @Override
+    public ImmutableBiomeArea getImmutableBiomeCopy() {
+        return null;
     }
 
     @Override
@@ -590,8 +854,28 @@ public class ShinyWorld implements World {
     }
 
     @Override
+    public MutableBiomeArea getBiomeView(Vector2i vector2i, Vector2i vector2i1) {
+        return null;
+    }
+
+    @Override
+    public MutableBiomeArea getBiomeView(DiscreteTransform2 discreteTransform2) {
+        return null;
+    }
+
+    @Override
+    public MutableBiomeArea getRelativeBiomeView() {
+        return null;
+    }
+
+    @Override
     public Collection<Entity> getEntities() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public Collection<Entity> getEntities(java.util.function.Predicate<Entity> predicate) {
+        return null;
     }
 
     @Override
@@ -620,6 +904,16 @@ public class ShinyWorld implements World {
     }
 
     @Override
+    public java.util.Optional<Entity> restoreSnapshot(EntitySnapshot entitySnapshot, Vector3d vector3d) {
+        return null;
+    }
+
+    @Override
+    public boolean spawnEntity(Entity entity, Cause cause) {
+        return false;
+    }
+
+    @Override
     public boolean spawnEntity(Entity entity) {
         return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -632,6 +926,11 @@ public class ShinyWorld implements World {
     @Override
     public Collection<TileEntity> getTileEntities() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public Collection<TileEntity> getTileEntities(java.util.function.Predicate<TileEntity> predicate) {
+        return null;
     }
 
     @Override
@@ -667,6 +966,16 @@ public class ShinyWorld implements World {
     @Override
     public Vector3i getBlockSize() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public boolean containsBlock(Vector3i vector3i) {
+        return false;
+    }
+
+    @Override
+    public boolean containsBlock(int i, int i1, int i2) {
+        return false;
     }
 
     @Override
@@ -712,6 +1021,21 @@ public class ShinyWorld implements World {
     @Override
     public void playSound(SoundType sound, Vector3d position, double volume, double pitch, double minVolume) {
         //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void sendMessage(ChatType chatType, Text text) {
+
+    }
+
+    @Override
+    public void sendMessages(ChatType chatType, Text... texts) {
+
+    }
+
+    @Override
+    public void sendMessages(ChatType chatType, Iterable<Text> iterable) {
+
     }
 
     @Override
@@ -787,5 +1111,40 @@ public class ShinyWorld implements World {
         } else if (weather == Weathers.THUNDER_STORM) {
             this.handle.setThunderDuration((int) duration);
         }
+    }
+
+    @Override
+    public boolean hitBlock(int i, int i1, int i2, Direction direction, Cause cause) {
+        return false;
+    }
+
+    @Override
+    public boolean interactBlock(int i, int i1, int i2, Direction direction, Cause cause) {
+        return false;
+    }
+
+    @Override
+    public boolean interactBlockWith(int i, int i1, int i2, ItemStack itemStack, Direction direction, Cause cause) {
+        return false;
+    }
+
+    @Override
+    public boolean placeBlock(int i, int i1, int i2, BlockState blockState, Direction direction, Cause cause) {
+        return false;
+    }
+
+    @Override
+    public boolean digBlock(int i, int i1, int i2, Cause cause) {
+        return false;
+    }
+
+    @Override
+    public boolean digBlockWith(int i, int i1, int i2, ItemStack itemStack, Cause cause) {
+        return false;
+    }
+
+    @Override
+    public int getBlockDigTimeWith(int i, int i1, int i2, ItemStack itemStack, Cause cause) {
+        return 0;
     }
 }

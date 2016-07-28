@@ -1,14 +1,18 @@
 package io.github.deathcap.bukkit2sponge;
 
 import com.google.common.base.Optional;
+import com.google.common.util.concurrent.ListenableFuture;
 import io.github.deathcap.bukkit2sponge.command.ShinyConsoleSource;
 import org.spongepowered.api.Server;
-import org.spongepowered.api.entity.player.Player;
-import org.spongepowered.api.net.ChannelListener;
-import org.spongepowered.api.net.ChannelRegistrationException;
+import org.spongepowered.api.entity.living.player.Player;
+import org.spongepowered.api.network.ChannelRegistrationException;
+import org.spongepowered.api.profile.GameProfileManager;
+import org.spongepowered.api.resourcepack.ResourcePack;
+import org.spongepowered.api.scoreboard.Scoreboard;
 import org.spongepowered.api.text.Text;
-import org.spongepowered.api.text.Texts;
-import org.spongepowered.api.util.command.source.ConsoleSource;
+import org.spongepowered.api.command.source.ConsoleSource;
+import org.spongepowered.api.text.channel.MessageChannel;
+import org.spongepowered.api.world.ChunkTicketManager;
 import org.spongepowered.api.world.World;
 import org.spongepowered.api.world.WorldCreationSettings;
 import org.spongepowered.api.world.storage.ChunkLayout;
@@ -74,6 +78,11 @@ public class ShinyServer implements Server {
     }
 
     @Override
+    public java.util.Optional<WorldProperties> getDefaultWorld() {
+        return null;
+    }
+
+    @Override
     public Optional<World> loadWorld(String worldName) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -104,6 +113,26 @@ public class ShinyServer implements Server {
     }
 
     @Override
+    public java.util.Optional<WorldProperties> createWorldProperties(WorldCreationSettings worldCreationSettings) {
+        return null;
+    }
+
+    @Override
+    public ListenableFuture<java.util.Optional<WorldProperties>> copyWorld(WorldProperties worldProperties, String s) {
+        return null;
+    }
+
+    @Override
+    public java.util.Optional<WorldProperties> renameWorld(WorldProperties worldProperties, String s) {
+        return null;
+    }
+
+    @Override
+    public ListenableFuture<Boolean> deleteWorld(WorldProperties worldProperties) {
+        return null;
+    }
+
+    @Override
     public Optional<WorldProperties> createWorld(WorldCreationSettings settings) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -114,6 +143,11 @@ public class ShinyServer implements Server {
     }
 
     @Override
+    public java.util.Optional<Scoreboard> getServerScoreboard() {
+        return null;
+    }
+
+    @Override
     public ChunkLayout getChunkLayout() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -121,6 +155,16 @@ public class ShinyServer implements Server {
     @Override
     public int getRunningTimeTicks() {
         return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public MessageChannel getBroadcastChannel() {
+        return null;
+    }
+
+    @Override
+    public void setBroadcastChannel(MessageChannel messageChannel) {
+
     }
 
     @Override
@@ -150,7 +194,12 @@ public class ShinyServer implements Server {
 
     @Override
     public Text getMotd() {
-        return Texts.of(handle.getMotd());
+        return Text.of(handle.getMotd());
+    }
+
+    @Override
+    public void shutdown() {
+
     }
 
     @Override
@@ -162,6 +211,26 @@ public class ShinyServer implements Server {
     @Override
     public ConsoleSource getConsole() {
         return consoleSource;
+    }
+
+    @Override
+    public ChunkTicketManager getChunkTicketManager() {
+        return null;
+    }
+
+    @Override
+    public GameProfileManager getGameProfileManager() {
+        return null;
+    }
+
+    @Override
+    public double getTicksPerSecond() {
+        return 0;
+    }
+
+    @Override
+    public java.util.Optional<ResourcePack> getDefaultResourcePack() {
+        return null;
     }
 
     @Override

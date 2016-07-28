@@ -7,10 +7,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.plugin.PluginManager;
-import org.spongepowered.api.service.command.SimpleCommandService;
-import org.spongepowered.api.util.command.CommandCallable;
-import org.spongepowered.api.util.command.CommandMapping;
-import org.spongepowered.api.util.command.dispatcher.Disambiguator;
+import org.spongepowered.api.command.SimpleCommandService;
+import org.spongepowered.api.command.CommandCallable;
+import org.spongepowered.api.command.CommandMapping;
+import org.spongepowered.api.command.dispatcher.Disambiguator;
 
 import java.lang.reflect.Field;
 import java.util.List;

@@ -1,6 +1,7 @@
 package io.github.deathcap.bukkit2sponge.event;
 
 import org.spongepowered.api.event.Event;
+import org.spongepowered.api.event.cause.Cause;
 import org.spongepowered.api.util.event.callback.CallbackList;
 
 /**
@@ -16,5 +17,10 @@ public class BaseEvent implements Event {
     @Override
     public CallbackList getCallbacks() {
         return callbacks;
+    }
+
+    @Override
+    public Cause getCause() {
+        return null;
     }
 }

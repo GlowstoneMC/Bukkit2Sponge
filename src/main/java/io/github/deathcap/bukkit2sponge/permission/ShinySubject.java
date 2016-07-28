@@ -4,9 +4,9 @@ import com.google.common.base.Optional;
 import org.spongepowered.api.service.permission.Subject;
 import org.spongepowered.api.service.permission.SubjectCollection;
 import org.spongepowered.api.service.permission.SubjectData;
-import org.spongepowered.api.service.permission.context.Context;
+import org.spongepowered.api.service.context.Context;
 import org.spongepowered.api.util.Tristate;
-import org.spongepowered.api.util.command.CommandSource;
+import org.spongepowered.api.command.CommandSource;
 
 import java.util.List;
 import java.util.Set;
@@ -32,6 +32,16 @@ public class ShinySubject implements Subject {
     @Override
     public SubjectCollection getContainingCollection() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public SubjectData getSubjectData() {
+        return null;
+    }
+
+    @Override
+    public SubjectData getTransientSubjectData() {
+        return null;
     }
 
     @Override
