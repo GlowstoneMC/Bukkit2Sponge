@@ -3,8 +3,6 @@ Bukkit2Sponge
 
 An implementation of [SpongeAPI](https://github.com/SpongePowered/SpongeAPI) as a Bukkit plugin.
 
-[![Build Status](https://circleci.com/gh/GlowstonePlusPlus/Bukkit2Sponge/tree/master.png)](https://circleci.com/gh/GlowstonePlusPlus/Bukkit2Sponge/tree/master)
-
 Bukkit2Sponge allows loading SpongeAPI plugins on Bukkit servers.
 
 * [Bukkit2Sponge thread on Sponge Forums](https://forums.spongepowered.org/t/bukkit2sponge-an-implementation-of-spongeapi-for-bukkit-servers/6747)
@@ -35,9 +33,7 @@ Downloads
 ---------
 
 Latest builds are available from:
-
-* [![Build Status](https://circleci.com/gh/GlowstonePlusPlus/Bukkit2Sponge/tree/master.png)](https://circleci.com/gh/GlowstoneMC/Bukkit2Sponge/tree/master) **[Latest development builds](https://circleci.com/gh/GlowstoneMC/Bukkit2Sponge/tree/master)** - click the latest build then expand "Artifacts" (if it does not show, try logging in with GitHub)
-* Releases also available on [Bukkit2Sponge resource on SpigotMC](http://www.spigotmc.org/resources/bukkit2sponge.6368/)
+http://bamboo.gserv.me/browse/GSPP-B2S/latestSuccessful/artifact/shared/Plugin-JAR/bukkit2sponge-0.1.0-SNAPSHOT.jar
 
 
 Building from source
@@ -48,19 +44,11 @@ Building from source
 [Maven](https://maven.apache.org), checkout the source:
 
 ```
-git clone --recursive https://github.com/GlowstoneMC/Bukkit2Sponge
+git clone https://github.com/GlowstoneMC/Bukkit2Sponge
 cd Bukkit2Sponge
 ```
 
-2. Build and install the APIs:
-
-```
-cd SpongeAPI
-./gradlew
-cd ..
-```
-
-3. Build the plugin:
+2. Build the plugin:
 
 ```
 mvn package
@@ -72,7 +60,7 @@ The plugin jar will be placed in `target/`.
 See also
 --------
 
-* [Sponge](https://github.com/SpongePowered/Sponge): SpongeAPI implementation on Minecraft Forge
+* [SpongeForge](https://github.com/SpongePowered/SpongeForge): SpongeAPI implementation on Minecraft Forge
 * [SpongeVanilla](https://github.com/SpongePowered/SpongeVanilla): SpongeAPI implementation on Minecraft
 * [Pore](https://github.com/LapisBlue/Pore): a SpongeAPI plugin to load Bukkit plugins (the opposite of Bukkit2Sponge)
 
