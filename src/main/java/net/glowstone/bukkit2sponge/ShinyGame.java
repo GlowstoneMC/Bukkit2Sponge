@@ -75,9 +75,15 @@ public class ShinyGame implements Game {
         };
     }
 
+    private GameState state;
+
     @Override
     public GameState getState() {
-        return null;
+        return state;
+    }
+
+    public void setState(GameState state) {
+        this.state = state;
     }
 
     @Override

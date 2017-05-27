@@ -1,7 +1,6 @@
 
 package net.glowstone.bukkit2sponge;
 
-import com.google.common.base.Throwables;
 import com.google.common.io.PatternFilenameFilter;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -9,9 +8,11 @@ import net.glowstone.bukkit2sponge.bukkit.BukkitListener;
 import net.glowstone.bukkit2sponge.event.GraniteEventFactory;
 import net.glowstone.bukkit2sponge.guice.ShinyGuiceModule;
 import net.glowstone.bukkit2sponge.plugin.GlowstoneConnector;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.spongepowered.api.Platform;
+import org.spongepowered.api.event.game.state.GameConstructionEvent;
+import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
+import org.spongepowered.api.event.game.state.GameStateEvent;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,11 +43,7 @@ public class Bukkit2Sponge extends JavaPlugin {
     @Override
     public void onEnable() {
         Bukkit2Sponge.instance = this;
-
-
-        PluginDescriptionFile pdfFile = this.getDescription();
-        getLogger().info( pdfFile.getName() + " version " + pdfFile.getVersion() + " is loading");
-
+        getLogger().info( getDescription().getName() + " v" + getDescription().getVersion() + " is loading...");
         load();
     }
 
@@ -79,7 +76,7 @@ public class Bukkit2Sponge extends JavaPlugin {
     }
 
     private void load() {
-        Collection<URL> loadedPluginURLs = null;
+        Collection<URL> loadedPluginURLs;
         List<URL> urls = getPluginURLs();
 
         try {
@@ -99,19 +96,19 @@ public class Bukkit2Sponge extends JavaPlugin {
              */
 
 
-            this.game = injector.getInstance(ShinyGame.class);
+            game = injector.getInstance(ShinyGame.class);
 
             getServer().getPluginManager().registerEvents(bukkitListener, this);
 
-            getLogger().info("SpongeAPI version: " + this.game.getPlatform().getContainer(Platform.Component.API).getVersion());
+            getLogger().info("SpongeAPI version: " + game.getPlatform().getContainer(Platform.Component.API).getVersion());
 
-            getLogger().info("Loading plugins...");
-            loadedPluginURLs = this.game.getPluginManager().loadPlugins(urls);
-            postState(ConstructionEvent.class);
+            getLogger().info("Loading SpongeAPI plugins...");
+            loadedPluginURLs = game.getPluginManager().loadPlugins(urls);
+            postState(GameConstructionEvent.class);
             getLogger().info("Initializing " + loadedPluginURLs.size() + " SpongeAPI plugins...");
-            postState(PreInitializationEvent.class);
+            postState(GamePreInitializationEvent.class);
         } catch (IOException e) {
-            throw Throwables.propagate(e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -119,8 +116,10 @@ public class Bukkit2Sponge extends JavaPlugin {
         return this.game;
     }
 
-    public void postState(Class<? extends StateEvent> type) {
-        this.game.getEventManager().post(GraniteEventFactory.createStateEvent(type, this.game));
+    public void postState(Class<? extends GameStateEvent> type) {
+        GameStateEvent event = GraniteEventFactory.createStateEvent(type, game);
+        game.setState(event.getState());
+        game.getEventManager().post(event);
     }
 
     // Sponge directories relative to our own Bukkit plugin data folder

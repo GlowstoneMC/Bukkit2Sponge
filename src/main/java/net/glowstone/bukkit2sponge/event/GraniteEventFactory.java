@@ -27,16 +27,10 @@ package net.glowstone.bukkit2sponge.event;
  */
 
 import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
 import com.google.common.collect.Maps;
 import org.spongepowered.api.Game;
-import org.spongepowered.api.event.AbstractEvent;
-import org.spongepowered.api.event.state.StateEvent;
-import org.spongepowered.api.util.event.factory.ClassGeneratorProvider;
-import org.spongepowered.api.util.event.factory.EventFactory;
-import org.spongepowered.api.util.event.factory.FactoryProvider;
-import org.spongepowered.api.util.event.factory.NullPolicy;
+import org.spongepowered.api.event.game.state.GameStateEvent;
+import org.spongepowered.api.event.impl.AbstractEvent;
 
 import java.util.Map;
 
@@ -59,7 +53,7 @@ public class GraniteEventFactory {
     }
 
     @SuppressWarnings({"unchecked", "ConstantConditions"})
-    public static <T extends StateEvent> T createStateEvent(Class<T> type, Game game) {
+    public static <T extends GameStateEvent> T createStateEvent(Class<T> type, Game game) {
         Map<String, Object> values = Maps.newHashMapWithExpectedSize(1);
         values.put("game", game);
         return (T) factories.getUnchecked(type).apply(values);
