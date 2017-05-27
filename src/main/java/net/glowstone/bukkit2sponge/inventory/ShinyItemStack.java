@@ -1,12 +1,20 @@
 package net.glowstone.bukkit2sponge.inventory;
 
-import com.google.common.base.Optional;
 import org.spongepowered.api.data.*;
+import org.spongepowered.api.data.key.Key;
+import org.spongepowered.api.data.manipulator.DataManipulator;
+import org.spongepowered.api.data.merge.MergeFunction;
+import org.spongepowered.api.data.persistence.InvalidDataException;
+import org.spongepowered.api.data.value.BaseValue;
+import org.spongepowered.api.data.value.immutable.ImmutableValue;
+import org.spongepowered.api.event.cause.Cause;
 import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.item.inventory.ItemStack;
-import org.spongepowered.api.service.persistence.InvalidDataException;
+import org.spongepowered.api.item.inventory.ItemStackSnapshot;
+import org.spongepowered.api.text.translation.Translation;
 
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * Implementation of {@link ItemStack}.
@@ -58,62 +66,142 @@ public class ShinyItemStack implements ItemStack {
     }
 
     @Override
-    public <T extends DataManipulator<T>> Optional<T> getData(Class<T> tClass) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public ItemStackSnapshot createSnapshot() {
+        return null;
     }
 
     @Override
-    public <T extends DataManipulator<T>> Optional<T> getOrCreate(Class<T> tClass) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public boolean equalTo(ItemStack that) {
+        return false;
     }
 
     @Override
-    public <T extends DataManipulator<T>> boolean remove(Class<T> tClass) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    public boolean isEmpty() {
+        return false;
     }
 
     @Override
-    public <T extends DataManipulator<T>> boolean isCompatible(Class<T> tClass) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    public <E> java.util.Optional<E> get(Key<? extends BaseValue<E>> key) {
+        return null;
     }
 
     @Override
-    public <T extends DataManipulator<T>> DataTransactionResult offer(T t) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public <E, V extends BaseValue<E>> java.util.Optional<V> getValue(Key<V> key) {
+        return null;
     }
 
     @Override
-    public <T extends DataManipulator<T>> DataTransactionResult offer(T t, DataPriority dataPriority) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public boolean supports(Key<?> key) {
+        return false;
     }
 
     @Override
-    public Collection<? extends DataManipulator<?>> getManipulators() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public ItemStack copy() {
+        return null;
     }
 
     @Override
-    public <T extends Property<?, ?>> Optional<T> getProperty(Class<T> tClass) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Set<Key<?>> getKeys() {
+        return null;
     }
 
     @Override
-    public Collection<Property<?, ?>> getProperties() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Set<ImmutableValue<?>> getValues() {
+        return null;
     }
 
     @Override
-    public boolean validateRawData(DataContainer dataContainer) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    public boolean validateRawData(DataView container) {
+        return false;
     }
 
     @Override
-    public void setRawData(DataContainer container) throws InvalidDataException {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public void setRawData(DataView container) throws InvalidDataException {
+
+    }
+
+    @Override
+    public int getContentVersion() {
+        return 0;
     }
 
     @Override
     public DataContainer toContainer() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;
+    }
+
+    @Override
+    public <T extends Property<?, ?>> java.util.Optional<T> getProperty(Class<T> propertyClass) {
+        return null;
+    }
+
+    @Override
+    public Collection<Property<?, ?>> getApplicableProperties() {
+        return null;
+    }
+
+    @Override
+    public <T extends DataManipulator<?, ?>> java.util.Optional<T> get(Class<T> containerClass) {
+        return null;
+    }
+
+    @Override
+    public <T extends DataManipulator<?, ?>> java.util.Optional<T> getOrCreate(Class<T> containerClass) {
+        return null;
+    }
+
+    @Override
+    public boolean supports(Class<? extends DataManipulator<?, ?>> holderClass) {
+        return false;
+    }
+
+    @Override
+    public <E> DataTransactionResult offer(Key<? extends BaseValue<E>> key, E value) {
+        return null;
+    }
+
+    @Override
+    public <E> DataTransactionResult offer(Key<? extends BaseValue<E>> key, E value, Cause cause) {
+        return null;
+    }
+
+    @Override
+    public DataTransactionResult offer(DataManipulator<?, ?> valueContainer, MergeFunction function) {
+        return null;
+    }
+
+    @Override
+    public DataTransactionResult offer(DataManipulator<?, ?> valueContainer, MergeFunction function, Cause cause) {
+        return null;
+    }
+
+    @Override
+    public DataTransactionResult remove(Class<? extends DataManipulator<?, ?>> containerClass) {
+        return null;
+    }
+
+    @Override
+    public DataTransactionResult remove(Key<?> key) {
+        return null;
+    }
+
+    @Override
+    public DataTransactionResult undo(DataTransactionResult result) {
+        return null;
+    }
+
+    @Override
+    public DataTransactionResult copyFrom(DataHolder that, MergeFunction function) {
+        return null;
+    }
+
+    @Override
+    public Collection<DataManipulator<?, ?>> getContainers() {
+        return null;
+    }
+
+    @Override
+    public Translation getTranslation() {
+        return null;
     }
 }
