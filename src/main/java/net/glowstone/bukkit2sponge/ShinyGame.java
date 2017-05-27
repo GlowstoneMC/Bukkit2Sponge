@@ -12,6 +12,7 @@ import org.spongepowered.api.world.TeleportHelper;
 
 import java.nio.file.Path;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Implementation of {@link Game}.
@@ -58,7 +59,17 @@ public class ShinyGame implements Game {
 
             @Override
             public PluginContainer getContainer(Component component) {
-                return null;
+                return new PluginContainer() {
+                    @Override
+                    public String getId() {
+                        return "SpongeAPI";
+                    }
+
+                    @Override
+                    public Optional<String> getVersion() {
+                        return Optional.ofNullable(ShinyGame.this.getClass().getPackage().getSpecificationVersion());
+                    }
+                };
             }
 
             @Override

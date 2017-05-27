@@ -99,7 +99,7 @@ public class Bukkit2Sponge extends JavaPlugin {
 
             getServer().getPluginManager().registerEvents(bukkitListener, this);
 
-            getLogger().info("SpongeAPI version: " + game.getPlatform().getContainer(Platform.Component.API).getVersion());
+            getLogger().info("SpongeAPI version: " + game.getPlatform().getContainer(Platform.Component.API).getVersion().get());
 
             getLogger().info("Loading SpongeAPI plugins...");
             loadedPluginURLs = game.getPluginManager().loadPlugins(urls);
