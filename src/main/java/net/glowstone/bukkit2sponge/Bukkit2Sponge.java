@@ -8,7 +8,7 @@ import com.google.inject.Injector;
 import net.glowstone.bukkit2sponge.bukkit.BukkitListener;
 import net.glowstone.bukkit2sponge.event.GraniteEventFactory;
 import net.glowstone.bukkit2sponge.guice.ShinyGuiceModule;
-import net.glowstone.bukkit2sponge.plugin.GlowstonePlusPlusConnector;
+import net.glowstone.bukkit2sponge.plugin.GlowstoneConnector;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.spongepowered.api.Platform;
@@ -69,9 +69,9 @@ public class Bukkit2Sponge extends JavaPlugin {
             }
         }
 
-        List<URL> gs = GlowstonePlusPlusConnector.getSpongePlugins(getServer());
+        List<URL> gs = GlowstoneConnector.getSpongePlugins(getServer());
         if (gs != null) {
-            Bukkit2Sponge.instance.getLogger().info("Glowstone++ integration enabled (" + gs.size() + " plugins)");
+            Bukkit2Sponge.instance.getLogger().info("Glowstone integration enabled (" + gs.size() + " plugins)");
             urls.addAll(gs);
         }
 

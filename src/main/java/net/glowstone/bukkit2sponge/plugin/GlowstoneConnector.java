@@ -10,14 +10,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GlowstonePlusPlusConnector {
+public class GlowstoneConnector {
 
     @SuppressWarnings("unchecked")
     public static List<URL> getSpongePlugins(Server server) {
-        List<File> files = new ArrayList<>();
+        List<File> files;
 
         try {
-            Method method = server.getClass().getMethod("getSpongePlugins", new Class[] { });
+            Method method = server.getClass().getMethod("getSpongePlugins");
 
             files = (List<File>) method.invoke(server);
         } catch (Exception ex) {
@@ -27,7 +27,7 @@ public class GlowstonePlusPlusConnector {
 
         List<URL> urls = new ArrayList<>(files.size());
         for (File file : files) {
-            Bukkit2Sponge.instance.getLogger().info("SpongeAPI plugin from Glowstone++: " + file.getPath());
+            Bukkit2Sponge.instance.getLogger().info("SpongeAPI plugin from Glowstone: " + file.getPath());
             try {
                 urls.add(file.toURI().toURL());
             } catch (MalformedURLException ex) {
