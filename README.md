@@ -33,7 +33,7 @@ Downloads
 ---------
 
 Latest builds are available from:
-http://bamboo.gserv.me/browse/GSPP-B2S/latestSuccessful/artifact/shared/Plugin-JAR/bukkit2sponge-0.1.0-SNAPSHOT.jar
+https://bamboo.gserv.me/browse/GSPP-B2S/latestSuccessful/artifact/shared/Plugin-JAR/bukkit2sponge-0.1.0-SNAPSHOT.jar
 
 
 Building from source
