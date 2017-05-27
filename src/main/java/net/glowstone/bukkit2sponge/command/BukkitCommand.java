@@ -7,8 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.spongepowered.api.text.Text;
-import org.spongepowered.api.text.Texts;
-import org.spongepowered.api.util.command.*;
+import org.spongepowered.api.text.serializer.TextSerializers;
 
 import java.util.ArrayList;
 
@@ -31,13 +30,13 @@ public class BukkitCommand extends Command {
             return commandMapping.getPrimaryAlias();
         }
 
-        return Texts.toPlain(textOptional.get());
+        return TextSerializers.PLAIN.serialize(textOptional.get());
     }
 
     private static String getUsage(CommandMapping commandMapping) {
         Text text = commandMapping.getCallable().getUsage(Bukkit2Sponge.instance.getGame().getServer().getConsole());
 
-        return Texts.toPlain(text);
+        return TextSerializers.PLAIN.serialize(text);
     }
 
    @Override

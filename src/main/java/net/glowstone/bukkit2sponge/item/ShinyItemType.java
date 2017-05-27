@@ -38,7 +38,7 @@ public class ShinyItemType implements ItemType {
 
     @Override
     public Translation getTranslation() {
-        return null; //Texts.of("item." + id + ".name").get(); // TODO
+        return null; //Text.of("item." + id + ".name").get(); // TODO
     }
 
     @Override

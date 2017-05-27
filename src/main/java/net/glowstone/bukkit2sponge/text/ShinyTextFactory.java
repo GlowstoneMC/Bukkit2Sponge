@@ -1,8 +1,6 @@
 package net.glowstone.bukkit2sponge.text;
 
 import org.spongepowered.api.text.Text;
-import org.spongepowered.api.text.TextFactory;
-import org.spongepowered.api.text.Texts;
 import org.spongepowered.api.text.translation.Translation;
 
 import java.lang.reflect.Field;
@@ -13,7 +11,7 @@ public class ShinyTextFactory implements TextFactory {
 
     public static void inject() {
         try {
-            Field field = Texts.class.getDeclaredField("factory");
+            Field field = Text.class.getDeclaredField("factory");
             field.setAccessible(true);
 
             // remove private final - https://gist.github.com/asaskevich/4c6dee9169095fa2477f
