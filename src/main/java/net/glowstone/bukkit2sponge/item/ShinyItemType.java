@@ -1,9 +1,11 @@
 package net.glowstone.bukkit2sponge.item;
 
-import com.google.common.base.Optional;
-import org.spongepowered.api.item.ItemType;
+import org.spongepowered.api.block.BlockType;
 import org.spongepowered.api.data.Property;
+import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.text.translation.Translation;
+
+import java.util.Optional;
 
 /**
  * Todo: Javadoc for ShinyItemType.
@@ -19,6 +21,11 @@ public class ShinyItemType implements ItemType {
     @Override
     public String getId() {
         return id;
+    }
+
+    @Override
+    public Optional<BlockType> getBlock() {
+        return null;
     }
 
     @Override

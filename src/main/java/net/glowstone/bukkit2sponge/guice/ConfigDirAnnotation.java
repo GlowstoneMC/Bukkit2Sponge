@@ -27,7 +27,7 @@ package net.glowstone.bukkit2sponge.guice;
  * THE SOFTWARE.
  */
 
-import org.spongepowered.api.service.config.ConfigDir;
+import org.spongepowered.api.config.ConfigDir;
 
 import java.lang.annotation.Annotation;
 

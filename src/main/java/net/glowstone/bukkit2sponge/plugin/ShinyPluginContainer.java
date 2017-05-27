@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.plugin.PluginContainer;
 
+import java.util.Optional;
+
 /**
  * Implementation of {@link PluginContainer}.
  */
@@ -41,13 +43,13 @@ public final class ShinyPluginContainer implements PluginContainer {
     }
 
     @Override
-    public String getVersion() {
-        return this.version;
+    public Optional<String> getVersion() {
+        return Optional.of(this.version);
     }
 
     @Override
-    public Object getInstance() {
-        return this.instance;
+    public Optional<Object> getInstance() {
+        return Optional.of(this.instance);
     }
 
     public Logger getLogger() {

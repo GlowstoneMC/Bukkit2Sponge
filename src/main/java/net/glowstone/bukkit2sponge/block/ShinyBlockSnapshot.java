@@ -1,6 +1,7 @@
 package net.glowstone.bukkit2sponge.block;
 
 import com.flowpowered.math.vector.Vector3i;
+import net.glowstone.bukkit2sponge.util.Unsupported;
 import org.spongepowered.api.block.BlockSnapshot;
 import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.block.tileentity.TileEntityArchetype;
@@ -114,7 +115,7 @@ public class ShinyBlockSnapshot implements BlockSnapshot {
 
     @Override
     public Collection<Property<?, ?>> getApplicableProperties() {
-        return null;
+        throw Unsupported.missing();
     }
 
     @Override

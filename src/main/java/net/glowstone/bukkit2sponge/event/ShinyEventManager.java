@@ -1,13 +1,11 @@
 package net.glowstone.bukkit2sponge.event;
 
-import org.spongepowered.api.service.event.EventManager;
-import org.spongepowered.api.event.Cancellable;
-import org.spongepowered.api.event.Event;
-import org.spongepowered.api.event.Order;
-import org.spongepowered.api.event.Subscribe;
+import org.spongepowered.api.event.*;
 
-import java.lang.reflect.Method;
-import java.util.*;
+import java.util.EnumMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Implementation of {@link EventManager}.
@@ -23,26 +21,33 @@ public class ShinyEventManager implements EventManager {
     }
 
     @Override
-    public void register(Object plugin, Object obj) {
-        for (Method method : obj.getClass().getMethods()) {
-            Subscribe annotation = method.getAnnotation(Subscribe.class);
-            if (annotation != null && method.getParameterTypes().length == 1) {
-                EventRegistration reg = new EventRegistration(obj, method, annotation.ignoreCancelled());
-                registrations.get(annotation.order()).add(reg);
-            }
-        }
+    public void registerListeners(Object plugin, Object obj) {
+
     }
 
     @Override
-    public void unregister(Object obj) {
-        for (List<EventRegistration> list : registrations.values()) {
-            Iterator<EventRegistration> iter = list.iterator();
-            while (iter.hasNext()) {
-                if (iter.next().getObject() == obj) {
-                    iter.remove();
-                }
-            }
-        }
+    public <T extends Event> void registerListener(Object plugin, Class<T> eventClass, EventListener<? super T> listener) {
+
+    }
+
+    @Override
+    public <T extends Event> void registerListener(Object plugin, Class<T> eventClass, Order order, EventListener<? super T> listener) {
+
+    }
+
+    @Override
+    public <T extends Event> void registerListener(Object plugin, Class<T> eventClass, Order order, boolean beforeModifications, EventListener<? super T> listener) {
+
+    }
+
+    @Override
+    public void unregisterListeners(Object obj) {
+
+    }
+
+    @Override
+    public void unregisterPluginListeners(Object plugin) {
+
     }
 
     @Override

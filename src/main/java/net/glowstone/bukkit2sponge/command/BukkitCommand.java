@@ -1,15 +1,19 @@
 package net.glowstone.bukkit2sponge.command;
 
 import com.google.common.base.Joiner;
-import com.google.common.base.Optional;
 import net.glowstone.bukkit2sponge.Bukkit2Sponge;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
+import org.spongepowered.api.command.CommandException;
+import org.spongepowered.api.command.CommandMapping;
+import org.spongepowered.api.command.CommandResult;
+import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.serializer.TextSerializers;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class BukkitCommand extends Command {
 
@@ -26,11 +30,7 @@ public class BukkitCommand extends Command {
 
     private static String getDescription(CommandMapping commandMapping) {
         Optional<Text> textOptional = commandMapping.getCallable().getShortDescription(Bukkit2Sponge.instance.getGame().getServer().getConsole());
-        if (!textOptional.isPresent()) {
-            return commandMapping.getPrimaryAlias();
-        }
-
-        return TextSerializers.PLAIN.serialize(textOptional.get());
+        return textOptional.map(TextSerializers.PLAIN::serialize).orElseGet(commandMapping::getPrimaryAlias);
     }
 
     private static String getUsage(CommandMapping commandMapping) {
@@ -52,9 +52,9 @@ public class BukkitCommand extends Command {
         String arguments = Joiner.on(' ').join(strings); // TODO: ?
 
         try {
-            Optional<CommandResult> commandResult = commandMapping.getCallable().process(commandSource, arguments);
+            CommandResult commandResult = commandMapping.getCallable().process(commandSource, arguments);
 
-            return commandResult.isPresent(); // TODO
+            return commandResult != null; // TODO
         } catch (CommandException ex) {
             ex.printStackTrace();
             return false;

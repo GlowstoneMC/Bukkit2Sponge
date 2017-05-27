@@ -30,17 +30,18 @@ package net.glowstone.bukkit2sponge.guice;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provider;
 import com.google.inject.TypeLiteral;
+import net.glowstone.bukkit2sponge.plugin.ShinyPluginContainer;
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
 import ninja.leaping.configurate.hocon.HoconConfigurationLoader;
 import ninja.leaping.configurate.loader.ConfigurationLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.spongepowered.api.config.ConfigDir;
+import org.spongepowered.api.config.DefaultConfig;
 import org.spongepowered.api.plugin.PluginContainer;
-import org.spongepowered.api.service.config.ConfigDir;
-import org.spongepowered.api.service.config.DefaultConfig;
-import net.glowstone.bukkit2sponge.plugin.ShinyPluginContainer;
-import java.io.File;
+
 import javax.inject.Inject;
+import java.io.File;
 
 public class ShinyPluginGuiceModule extends AbstractModule {
 

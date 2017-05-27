@@ -27,8 +27,7 @@ package net.glowstone.bukkit2sponge.guice;
  * THE SOFTWARE.
  */
 
-import com.google.common.base.Objects;
-import org.spongepowered.api.service.config.DefaultConfig;
+import org.spongepowered.api.config.DefaultConfig;
 
 import java.lang.annotation.Annotation;
 
@@ -70,9 +69,7 @@ class ConfigFileAnnotation implements DefaultConfig {
 
     @Override
     public String toString() {
-        return Objects.toStringHelper('@' + getClass().getName())
-                .add("shared", this.shared)
-                .toString();
+        return '@' + getClass().getName() + "{" +
+                "shared: " + this.shared + "}";
     }
-
 }

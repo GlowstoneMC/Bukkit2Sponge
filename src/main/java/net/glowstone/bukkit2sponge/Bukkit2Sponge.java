@@ -5,7 +5,6 @@ import com.google.common.io.PatternFilenameFilter;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import net.glowstone.bukkit2sponge.bukkit.BukkitListener;
-import net.glowstone.bukkit2sponge.event.GraniteEventFactory;
 import net.glowstone.bukkit2sponge.guice.ShinyGuiceModule;
 import net.glowstone.bukkit2sponge.plugin.GlowstoneConnector;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -117,9 +116,7 @@ public class Bukkit2Sponge extends JavaPlugin {
     }
 
     public void postState(Class<? extends GameStateEvent> type) {
-        GameStateEvent event = GraniteEventFactory.createStateEvent(type, game);
-        game.setState(event.getState());
-        game.getEventManager().post(event);
+
     }
 
     // Sponge directories relative to our own Bukkit plugin data folder

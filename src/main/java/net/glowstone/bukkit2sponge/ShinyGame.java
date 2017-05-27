@@ -3,7 +3,6 @@ package net.glowstone.bukkit2sponge;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import net.glowstone.bukkit2sponge.plugin.ShinyPluginManager;
-import net.glowstone.bukkit2sponge.text.ShinyTextFactory;
 import org.bukkit.Bukkit;
 import org.spongepowered.api.*;
 import org.spongepowered.api.plugin.PluginContainer;
@@ -35,7 +34,6 @@ public class ShinyGame implements Game {
         API_VERSION = (apiVersion == null) ? "unknown" : apiVersion;
         String implVersion = pkg.getImplementationVersion();
         IMPL_VERSION = (implVersion == null) ? "unknown" : implVersion;
-        ShinyTextFactory.inject();
     }
 
     @Inject

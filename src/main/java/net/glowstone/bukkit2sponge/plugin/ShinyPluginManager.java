@@ -1,12 +1,9 @@
 package net.glowstone.bukkit2sponge.plugin;
 
-import com.google.common.base.Optional;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import net.glowstone.bukkit2sponge.Bukkit2Sponge;
 import net.glowstone.bukkit2sponge.ShinyGame;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.spongepowered.api.plugin.PluginContainer;
 import org.spongepowered.api.plugin.PluginManager;
 
@@ -35,17 +32,12 @@ public class ShinyPluginManager implements PluginManager {
 
     @Override
     public Optional<PluginContainer> fromInstance(Object instance) {
-        return Optional.fromNullable(instanceMap.get(instance));
+        return Optional.ofNullable(instanceMap.get(instance));
     }
 
     @Override
     public Optional<PluginContainer> getPlugin(String id) {
-        return Optional.fromNullable(plugins.get(id));
-    }
-
-    @Override
-    public Logger getLogger(PluginContainer plugin) {
-        return LoggerFactory.getLogger(plugin.getName());
+        return Optional.ofNullable(plugins.get(id));
     }
 
     @Override
@@ -74,7 +66,7 @@ public class ShinyPluginManager implements PluginManager {
             Bukkit2Sponge.instance.getLogger().info("SpongeAPI plugin found: "+container.getName()+" v"+container.getVersion());
             plugins.put(container.getId(), container);
             instanceMap.put(container.getInstance(), container);
-            game.getEventManager().register(container.getInstance(), container.getInstance());
+            game.getEventManager().registerListeners(container.getInstance(), container.getInstance());
         }
 
         return urls;
