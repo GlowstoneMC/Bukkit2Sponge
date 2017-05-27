@@ -1,9 +1,9 @@
 package net.glowstone.bukkit2sponge;
 
-import com.google.common.base.Optional;
 import net.glowstone.bukkit2sponge.command.ShinyConsoleSource;
 import org.spongepowered.api.Server;
 import org.spongepowered.api.command.source.ConsoleSource;
+import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.profile.GameProfileManager;
 import org.spongepowered.api.resourcepack.ResourcePack;
 import org.spongepowered.api.scoreboard.Scoreboard;
@@ -18,6 +18,7 @@ import org.spongepowered.api.world.storage.WorldProperties;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.Collection;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -42,12 +43,12 @@ public class ShinyServer implements Server {
 
     @Override
     public Optional<Player> getPlayer(UUID uniqueId) {
-        return Optional.absent();  //To change body of implemented methods use File | Settings | File Templates.
+        return Optional.empty();  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public Optional<Player> getPlayer(String name) {
-        return Optional.absent();  //To change body of implemented methods use File | Settings | File Templates.
+        return Optional.empty();  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -136,11 +137,6 @@ public class ShinyServer implements Server {
     }
 
     @Override
-    public Optional<WorldProperties> createWorld(WorldCreationSettings settings) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
     public boolean saveWorldProperties(WorldProperties properties) {
         return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -171,11 +167,6 @@ public class ShinyServer implements Server {
     }
 
     @Override
-    public void broadcastMessage(Text message) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
     public Optional<InetSocketAddress> getBoundAddress() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -197,7 +188,7 @@ public class ShinyServer implements Server {
 
     @Override
     public Text getMotd() {
-        return Texts.of(handle.getMotd());
+        return Text.of(handle.getMotd());
     }
 
     @Override

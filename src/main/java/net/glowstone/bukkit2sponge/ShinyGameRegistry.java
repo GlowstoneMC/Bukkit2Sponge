@@ -1,43 +1,43 @@
 package net.glowstone.bukkit2sponge;
 
-import com.google.common.base.Optional;
 import org.spongepowered.api.CatalogType;
-import org.spongepowered.api.GameDictionary;
-import org.spongepowered.api.GameProfile;
 import org.spongepowered.api.GameRegistry;
-import org.spongepowered.api.attribute.*;
 import org.spongepowered.api.block.BlockType;
-import org.spongepowered.api.data.DataManipulatorRegistry;
-import org.spongepowered.api.data.types.*;
-import org.spongepowered.api.effect.particle.ParticleEffectBuilder;
-import org.spongepowered.api.effect.particle.ParticleType;
+import org.spongepowered.api.data.type.Art;
+import org.spongepowered.api.data.value.ValueFactory;
 import org.spongepowered.api.entity.EntityType;
-import org.spongepowered.api.item.*;
-import org.spongepowered.api.item.inventory.ItemStackBuilder;
-import org.spongepowered.api.item.merchant.TradeOfferBuilder;
+import org.spongepowered.api.entity.ai.task.AITaskType;
+import org.spongepowered.api.entity.ai.task.AbstractAITask;
+import org.spongepowered.api.entity.living.Agent;
+import org.spongepowered.api.item.ItemType;
+import org.spongepowered.api.item.merchant.VillagerRegistry;
 import org.spongepowered.api.item.recipe.RecipeRegistry;
-import org.spongepowered.api.potion.PotionEffectBuilder;
+import org.spongepowered.api.network.status.Favicon;
+import org.spongepowered.api.registry.CatalogRegistryModule;
+import org.spongepowered.api.registry.CatalogTypeAlreadyRegisteredException;
+import org.spongepowered.api.registry.RegistryModule;
+import org.spongepowered.api.registry.RegistryModuleAlreadyRegisteredException;
 import org.spongepowered.api.resourcepack.ResourcePack;
-import org.spongepowered.api.scoreboard.ScoreboardBuilder;
-import org.spongepowered.api.scoreboard.TeamBuilder;
 import org.spongepowered.api.scoreboard.displayslot.DisplaySlot;
-import org.spongepowered.api.scoreboard.objective.ObjectiveBuilder;
-import org.spongepowered.api.stats.*;
-import org.spongepowered.api.stats.achievement.AchievementBuilder;
-import org.spongepowered.api.status.Favicon;
+import org.spongepowered.api.statistic.BlockStatistic;
+import org.spongepowered.api.statistic.EntityStatistic;
+import org.spongepowered.api.statistic.ItemStatistic;
+import org.spongepowered.api.statistic.StatisticType;
 import org.spongepowered.api.text.format.TextColor;
+import org.spongepowered.api.text.selector.SelectorFactory;
+import org.spongepowered.api.text.serializer.TextSerializerFactory;
 import org.spongepowered.api.text.translation.Translation;
+import org.spongepowered.api.util.ResettableBuilder;
 import org.spongepowered.api.util.rotation.Rotation;
-import org.spongepowered.api.world.WorldBuilder;
-import org.spongepowered.api.world.gen.PopulatorFactory;
-import org.spongepowered.api.world.gen.WorldGeneratorModifier;
+import org.spongepowered.api.world.extent.ExtentBufferFactory;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.*;
+import java.util.function.Supplier;
 
 /**
  * Implementation of {@link GameRegistry}.
@@ -67,64 +67,53 @@ public class ShinyGameRegistry implements GameRegistry {
     }
 
     @Override
-    public <T extends CatalogType> Collection<? extends T> getAllOf(Class<T> tClass) {
+    public <T extends CatalogType> Collection<T> getAllOf(Class<T> tClass) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public <T> Optional<T> getBuilderOf(Class<T> tClass) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public <T extends CatalogType> Collection<T> getAllFor(String pluginId, Class<T> typeClass) {
+        return null;
     }
 
     @Override
-    public ItemStackBuilder getItemBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public <T extends CatalogType> GameRegistry registerModule(Class<T> catalogClass, CatalogRegistryModule<T> registryModule) throws IllegalArgumentException, RegistryModuleAlreadyRegisteredException {
+        return null;
     }
 
     @Override
-    public TradeOfferBuilder getTradeOfferBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public GameRegistry registerModule(RegistryModule module) throws RegistryModuleAlreadyRegisteredException {
+        return null;
     }
 
     @Override
-    public PotionEffectBuilder getPotionEffectBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public <T> GameRegistry registerBuilderSupplier(Class<T> builderClass, Supplier<? extends T> supplier) {
+        return null;
     }
 
     @Override
-    public ObjectiveBuilder getObjectiveBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public <T extends ResettableBuilder<?, ? super T>> T createBuilder(Class<T> builderClass) throws IllegalArgumentException {
+        return null;
     }
 
     @Override
-    public TeamBuilder getTeamBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public ScoreboardBuilder getScoreboardBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public ParticleEffectBuilder getParticleEffectBuilder(ParticleType particle) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-
-    @Override
-    public Collection<Career> getCareers(Profession profession) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public AchievementBuilder getAchievementBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public <T extends CatalogType> T register(Class<T> type, T obj) throws IllegalArgumentException, CatalogTypeAlreadyRegisteredException {
+        return null;
     }
 
     @Override
     public Optional<Rotation> getRotationFromDegree(int degrees) {
-        return Optional.fromNullable(rotations.get(degrees)); // TODO: int -> Rotation
+        return Optional.ofNullable(rotations.get(degrees)); // TODO: int -> Rotation
+    }
+
+    @Override
+    public Favicon loadFavicon(String raw) throws IOException {
+        return null;
+    }
+
+    @Override
+    public Favicon loadFavicon(Path path) throws IOException {
+        return null;
     }
 
     @Override
@@ -133,73 +122,18 @@ public class ShinyGameRegistry implements GameRegistry {
     }
 
     @Override
-    public Optional<EntityStatistic> getEntityStatistic(StatisticGroup statisticGroup, EntityType entityType) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Optional<EntityStatistic> getEntityStatistic(StatisticType statType, EntityType entityType) {
+        return null;
     }
 
     @Override
-    public Optional<ItemStatistic> getItemStatistic(StatisticGroup statisticGroup, ItemType itemType) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Optional<ItemStatistic> getItemStatistic(StatisticType statType, ItemType itemType) {
+        return null;
     }
 
     @Override
-    public Optional<BlockStatistic> getBlockStatistic(StatisticGroup statisticGroup, BlockType blockType) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public Optional<TeamStatistic> getTeamStatistic(StatisticGroup statisticGroup, TextColor teamColor) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public Collection<Statistic> getStatistics(StatisticGroup statisticGroup) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public StatisticBuilder getStatisticBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public StatisticBuilder.EntityStatisticBuilder getEntityStatisticBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public StatisticBuilder.BlockStatisticBuilder getBlockStatisticBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public StatisticBuilder.ItemStatisticBuilder getItemStatisticBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public StatisticBuilder.TeamStatisticBuilder getTeamStatisticBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public void registerStatistic(Statistic stat) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public GameProfile createGameProfile(UUID uuid, String name) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public Favicon loadFavicon(String raw) throws IOException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public Favicon loadFavicon(File file) throws IOException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Optional<BlockStatistic> getBlockStatistic(StatisticType statType, BlockType blockType) {
+        return null;
     }
 
     @Override
@@ -218,43 +152,13 @@ public class ShinyGameRegistry implements GameRegistry {
     }
 
     @Override
-    public GameDictionary getGameDictionary() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
     public RecipeRegistry getRecipeRegistry() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public DataManipulatorRegistry getManipulatorRegistry() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public AttributeModifierBuilder getAttributeModifierBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public AttributeCalculator getAttributeCalculator() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public AttributeBuilder getAttributeBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public FireworkEffectBuilder getFireworkEffectBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public Optional<ResourcePack> getById(String id) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Optional<ResourcePack> getResourcePackById(String id) {
+        return null;
     }
 
     @Override
@@ -263,18 +167,38 @@ public class ShinyGameRegistry implements GameRegistry {
     }
 
     @Override
-    public void registerWorldGeneratorModifier(WorldGeneratorModifier worldGeneratorModifier) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public AITaskType registerAITaskType(Object plugin, String id, String name, Class<? extends AbstractAITask<? extends Agent>> aiClass) {
+        return null;
     }
 
     @Override
-    public WorldBuilder getWorldBuilder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public ExtentBufferFactory getExtentBufferFactory() {
+        return null;
     }
 
     @Override
-    public PopulatorFactory getPopulatorFactory() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public ValueFactory getValueFactory() {
+        return null;
+    }
+
+    @Override
+    public VillagerRegistry getVillagerRegistry() {
+        return null;
+    }
+
+    @Override
+    public TextSerializerFactory getTextSerializerFactory() {
+        return null;
+    }
+
+    @Override
+    public SelectorFactory getSelectorFactory() {
+        return null;
+    }
+
+    @Override
+    public Locale getLocale(String locale) {
+        return null;
     }
 
     @Override

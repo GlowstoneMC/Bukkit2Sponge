@@ -11,9 +11,7 @@ import net.glowstone.bukkit2sponge.guice.ShinyGuiceModule;
 import net.glowstone.bukkit2sponge.plugin.GlowstonePlusPlusConnector;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.spongepowered.api.event.state.ConstructionEvent;
-import org.spongepowered.api.event.state.PreInitializationEvent;
-import org.spongepowered.api.event.state.StateEvent;
+import org.spongepowered.api.Platform;
 
 import java.io.File;
 import java.io.IOException;
@@ -105,7 +103,7 @@ public class Bukkit2Sponge extends JavaPlugin {
 
             getServer().getPluginManager().registerEvents(bukkitListener, this);
 
-            getLogger().info("SpongeAPI version: " + this.game.getApiVersion());
+            getLogger().info("SpongeAPI version: " + this.game.getPlatform().getContainer(Platform.Component.API).getVersion());
 
             getLogger().info("Loading plugins...");
             loadedPluginURLs = this.game.getPluginManager().loadPlugins(urls);
